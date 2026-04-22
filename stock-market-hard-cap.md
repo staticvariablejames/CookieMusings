@@ -259,13 +259,13 @@ we get the following expression:
 ```
 and the same limit argument as before gives us the upper bound
 ```
-    (0.01* restingValue() + 642.12677)/(1-0.99) =~ restingValue() + 642126.772.
+    (0.01* restingValue() + 642.12677)/(1-0.99) =~ restingValue() + 64212.6772.
 ```
 
 In other words,
 for any reasonable bank levels
 (below 500),
-**it is mathematically impossible for a goods' value to go above $643k.**
+**it is mathematically impossible for a goods' value to go above $65k.**
 
 The bound is not tight
 ----------------------
@@ -278,19 +278,19 @@ This means that the upper bound calculated above can not be obtained this way.
 If we repeat the limit calculation with value update for the chaotic mode,
 we get the value
 ```
-    restingValue() + 632176.772.
+    restingValue() + 63217.6772.
 ```
 This value is the upper bound assuming the good is always in the chaotic mode,
 and _this_ bound is tight.
 So we know that,
 in theory,
-goods' values can go as close as we want to `restingValue() + 632176.772`;
-i.e. **it is theoretically possible for a good to reach the value $632k.**
+goods' values can go as close as we want to `restingValue() + 63217.6772`;
+i.e. **it is theoretically possible for a good to reach the value $63.2k.**
 
 Open Problems ("exercises for the reader")
 ==========================================
 
-The upper bound of $643k is not attainable because the two "components"
+The upper bound of $64.2k is not attainable because the two "components"
 (delta and value)
 get the highest boosts in different goods modes.
 This means that we can improve on that upper bound.
@@ -299,10 +299,10 @@ And when computing the upper bound for delta,
 we made the assumption that the goods value would always be above the market soft cap,
 which may not be true if the bank level is "too high".
 For example,
-if the bank level is 500k,
-then the soft cap is 1 500 097,
-which is clearly above the calculated upper bound of `restingValue() + 643k`.
-(The resting value would be about $500k in this case.)
+if the bank level is 50k,
+then the soft cap is 150 097,
+which is clearly above the calculated upper bound of `restingValue() + 64.2k`.
+(The resting value would be about $50k in this case.)
 Under these conditions,
 the delta may go higher,
 and so does the goods values.
