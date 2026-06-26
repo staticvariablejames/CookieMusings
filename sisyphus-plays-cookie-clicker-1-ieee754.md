@@ -386,3 +386,40 @@ This is where the reserved exponents show up.
     in many cases `NaN`s are displayed as "Infinity" by Cookie Clicker,
     so we will have to be careful to know when an infinite value is indeed `+Infinity`
     or just an incorrectly-rendered `NaN`.
+
+Effect on Counters
+------------------
+
+We have seen how sugar lumps stop increasing normally when reaching `2^53` lumps
+(i.e. 9.007 quadrillion lumps)
+and only increase further if we can get several lumps in a single go.
+Recall that JavaScript does not have alternative number formats,
+so _all_ numbers in Cookie Clicker behave like this.
+This is particularly important for counters,
+which are only ever incremented in steps of 1:
+as discussed above,
+these counters will be capped off at `2^53`.
+
+- Many statistics are simple counters.
+  All of the following are capped at `2^53`:
+  - Number of cookie clicks;
+  - Number of golden cookies clicked;
+  - Number of golden cookies missed;
+  - Number of ascensions;
+  - Number of reindeer clicked;
+  - Number of wrinklers popped;
+  - Number of garden sacrifices;
+  - Number of garden plants harvested;
+
+- Building levels are counters:
+  they increment by 1 whenever you level up the building,
+  and can only gain one level at a time.
+  Hence building levels are capped at `2^53`.
+
+- The counter for the number of spells cast in the Grimoire also stops at `2^53`.
+  At that point the outcomes of the Grimoire will be "stuck" too;
+  we will discuss more about this in a later article.
+
+Most of this article was spent understanding how IEEE754 works.
+In the next article,
+Sisyphus will purchase buildings and upgrades and perform combos!
