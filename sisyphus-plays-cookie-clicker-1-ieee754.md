@@ -1,10 +1,9 @@
-Sisyphus Plays Cookie Clicker
-=============================
+Sisyphus Plays Cookie Clicker I: Fighting Against IEEE754
+=========================================================
 
 (This is the first of a series of articles investigating the limits of Cookie Clicker.
-In this article we investigate how many cookies we can obtain without ascending,
-closing the game,
-or abusing the Grimoire spell Gambler's Fever Dream.)
+This article discusses how IEEE754 works
+and how it limits many counters in the game.)
 
 [Sisyphus](https://en.wikipedia.org/wiki/Sisyphus) is a character in Greek mythology
 who attracted the wrath of the Greek gods by deceitfully outsmarting them
@@ -31,7 +30,7 @@ so we also prevent that by simply forbidding Sisyphus from importing a save file
 
 Feigning annoyance,
 Sisyphus starts clicking.
-Cookie Clicker displays "Infinity cookies" once we hit one centillion cookies (10^303 cookies).
+Cookie Clicker will display "Infinity cookies" once we hit one centillion cookies (10^303 cookies).
 "Clicking 10^303 times will take a while",
 thinks Sisyphus,
 "but compared to literal eternity, this will be quick!"
@@ -43,18 +42,18 @@ ignoring other elements of the game (like buildings and golden cookies).
 The billionth click brings up the popup about sugar lumps,
 which is also promptly dismissed by our hero.
 
-The trillionth click brings the trillionth cookie and a tiny "+1" besides the "legacy" button.
+The trillionth click brings the trillionth cookie and a tiny "+1" underneath the "legacy" button.
 Clicking that button would allow Sisyphus to _ascend_.
 But we are in the Greek Underworld,
 and Sisyphus is still serving his sentence,
-so we forbid him from ascending.
+so he's not allowed ascensions of any kind.
 Hence that "+1" is also ignored.
 
 The quadrillionth click passes by without fanfare,
 but then an oddity happens:
 instead of marching forward towards the quintillionth cookie,
 Sisyphus' bakery gets stuck at 9.007 quadrillion cookies.
-It does not matter how long Sisyphus clicks,
+It does not matter how many times Sisyphus clicks,
 the number does not budge.
 What is going on?
 
@@ -63,8 +62,8 @@ the [IEEE Standard for Floating Point Arithmetic](https://en.wikipedia.org/wiki/
 also known as IEEE754.
 
 
-Interlude: how many sugar lumps can we get?
--------------------------------------------
+How many sugar lumps can we get?
+--------------------------------
 
 Cookie Clicker is implemented in JavaScript.
 This programming language is peculiar in that its numbers are all 64-bit floating-point numbers
@@ -81,7 +80,7 @@ Since we know that JavaScript numbers are stored in 64 bits,
 and there are `2^64` different 64-bit strings,
 we know that there are at most `2^64` different numbers with a floating-point representation.
 (In reality we only get `2^64-2^53` different numbers due to technicalities,
-but this is close to the `2^64` theoretical maximum.)
+but this is close to the theoretical maximum of `2^64`.)
 However the representable numbers are not evenly spaced,
 so we will have to learn how a string of 64 bits gets interpreted as a number.
 
@@ -127,7 +126,8 @@ The bit string representation of these numbers looks like
   - ...
   - The bit string `111...1111` encodes the number `1 + (2^52-1) * 2^(-52) = 2 - 2^(-52)`.
   - In fancy terms,
-    we encode the rational number `a/b` by first multiplying both `a` and `b` until `b = 2^52`,
+    we encode the rational number `a/b`
+    by first multiplying both `a` and `b` to ensure `b = 2^52`,
     and then encode `a` as a binary number.
     Because `1 <= a/b < 2`, the resulting `a` would need 53 bits to encode,
     but because the first bit is always `1`,
@@ -148,9 +148,8 @@ We split the real line in half-open intervals of the form `[2^e, 2^(e+1))`
 There are 2046 such intervals,
 one for each possible value of the exponent `e`.
 In each of these intervals,
-we can represent `2^52` numbers,
-all of them equally-spaced;
-each of these numbers correspond to one value of the significand `s`.
+we represent `2^52` equally-spaced numbers.
+Each of these numbers correspond to one value of the significand `s`.
 - For example,
   In the half-open interval `[1, 2)`,
   the `2^52` numbers which are represented are spaced apart exactly by `2^(-52)`.
@@ -188,7 +187,7 @@ we face trouble.
   so the representable numbers here are the multiples of 4.
 - In the half-open interval `[2^55, 5^56)` we represent only the multiples of 8, and so on.
 
-This explains why Sisyphus stopped at roughly 9 quadrillion.
+This explains why Sisyphus stopped at 9 quadrillion cookies.
 Once he got the `2^53`th cookie,
 the next cookie amount would be `2^53 + 1`,
 which is not representable as a floating-point number.
@@ -196,8 +195,7 @@ Hence JavaScript _rounds that number down_ to `2^53`.
 The next click also stays at `2^53` for the same reason.
 And the next and the next.
 Hence Sisyphus is stuck at `2^53` cookies,
-i.e. 9007199254740992,
-which is about 9.007 quadrillion.
+i.e. 9007199254740992---about 9.007 quadrillion.
 
 Hence Sisyphus must actually pay attention to other parts of the game,
 and the first thing that Sisyphus notices are sugar lumps.
@@ -205,7 +203,7 @@ They also go up in integer increments,
 so Sisyphus expected its number to also get stuck at `2^53`,
 but now there are different lump types.
 With a bit of luck,
-bifurcated sugar lumps yield two lumps at once,
+a bifurcated sugar lump yields two lumps at once,
 so the number of lumps becomes `2^53+2`,
 which is representable as a IEEE754 64-bit floating-point number.
 But then something weird happens:
@@ -218,7 +216,7 @@ What is going on?
 ### Rounding in IEEE754
 
 Whenever a mathematical operation is performed with IEEE754 floating-point numbers,
-the standard mandates that first the operation is to first be performed with infinite precision,
+the standard mandates that the operation is to first be performed with infinite precision,
 and then (once the mathematical result is established)
 the result is rounded to the nearest representable number.
 
@@ -226,7 +224,7 @@ For example,
 say we have `2^53` cookies and we get `1.5` more.
 The mathematical result `2^53+1.5` is not representable;
 the two representable numbers surrounding it are `2^53` and `2^53+2`,
-and the latter is closer,
+and the result is closer to the latter,
 so the resulting number of cookies is `2^53+2`.
 (If you are reading this in a web browser,
 you can check this yourself:
@@ -245,13 +243,13 @@ respectively.
 Look at the rightmost bit of the significand:
 it will always be the case that one of the candidates has a significand whose rightmost bit is `0`,
 and the other candidate has a significant whose rightmost bit is `1`.
-JavaScript specifies that we pick the one with bit `0` in this case,
+JavaScript specifies that we pick the one with bit `0` in case of ties,
 so the tie is broken in favor of `2^53`.
 
 If we had `2^53+2` lumps and we got another one,
-in this case the significands of the two candidates `2^53+2` and `2^53+4`
-are represented by `000...0001` and `000...0010`, respectively,
-so this time we pick the second one,
+then the significands of the two candidates `2^53+2` and `2^53+4`
+are represented by `000...0001` and `000...0010`, respectively.
+This this time we pick the second one,
 and we end up with `2^53+4` lumps.
 
 If we interpret the significand as a rational number of the form `a/2^52`,
@@ -286,8 +284,8 @@ But there is still one more way of getting multiple sugar lumps at once:
 sacrificing the garden seed log grants us 10 sugar lumps in a single go.
 So we can proceed through one last power of two.
 Between `2^56` and `2^57`,
-the `2^52` representable numbers are spaced 16 apart,
-so the first representable number after `2^56` is `2^56+16`,
+the `2^52` representable numbers are spaced 16 apart.
+The first representable number after `2^56` is `2^56+16`,
 hence when we get +10 lumps at once by sacrificing the garden
 the closest candidate to `2^56+10` is `2^56+16`.
 The next garden sacrifice gets us to `2^56+32` and so on,
@@ -296,9 +294,19 @@ Hence,
 once Sisyphus starts paying attention to the rest of the game,
 he can sacrifice the garden `2^52` times to go from `2^56` sugar lumps to `2^57`.
 
-(There is yet one last way of getting multiple sugar lumps,
-which I will talk about on Part III of this series,
-and we can ignore it for now.)
+(There is yet one last way of getting multiple sugar lumps:
+fully offline lumps
+---that is, sugar lumps which started growing offline and are auto-harvested offline---
+are awarded in a single go,
+so if Sisyphus logs off for 20 days,
+he will get 19 lumps in a single batch.
+This would essentially make the number of sugar lumps unlimited.
+but because Sisyphus is serving a sentence
+we will not simply allow him to log off whenever he pleases.
+His previous punishment was rolling a boulder for all eternity,
+so we will force him to play Cookie Clicker for all eternity.
+Hence for our purposes the cap on the number of sugar lumps is `2^57`.
+We will talk more about this technicality in a later article.)
 
 ### Zeros, Subnormals, Infinities, NaNs
 
@@ -311,7 +319,7 @@ When writing numbers in base-10 scientific notation,
 
     ± r * 10^e,
 
-we usually _normalize_ the significand `r` by placing it in the half-open interval `[1, 10)`;
+we _normalize_ the significand `r` by placing it in the half-open interval `[1, 10)`;
 i.e. we "float" the decimal place to make sure that `r` is between 1 and 10
 (including 1 and excluding 10).
 Analogously,
@@ -344,8 +352,8 @@ This is where the reserved exponents show up.
   and it encodes the number `r * 10^(-1022)`.
   - These numbers are called _subnormal_
     because the significand is smaller than it would be if it were to be normalized.
-    These numbers extend the range of numbers available and minimize rounding errors
-    when calculating with very small numbers,
+    These numbers extend a bit the range of numbers available
+    and reduce rounding errors when calculating with very small numbers,
     but much like negative zero,
     they will also not show up in Cookie Clicker.
 
@@ -366,7 +374,7 @@ This is where the reserved exponents show up.
     corresponding to `10^(3*99 + 3) = 10^300`.
     The next named exponent, 10^303, would be "centillion",
     but Cookie Clicker gives up and just say "infinity" for any values larger than 10^303.
-    The range lost is just a few powers of two,
+    The range lost is just a few powers of ten,
     but this does mean that Cookie Clicker says "infinity"
     a few exponents before reaching the IEEE754 `+Infinity`.
 
@@ -375,7 +383,8 @@ This is where the reserved exponents show up.
   then this is a special value called "Not a Number" (`NaN`).
   - `NaN`s show up when we attempt to perform a "meaningless operation",
     like calculating `Infinity-Infinity` or `0/0`.
-    Some mathematically impossible operations do have meaningful results;
+    Note that some mathematically meaningless operations
+    do have meaningful IEEE754 results as infinities;
     for example,
     division by zero results in Infinity,
     unless the numerator itself is zero or `NaN`.
@@ -386,6 +395,9 @@ This is where the reserved exponents show up.
     in many cases `NaN`s are displayed as "Infinity" by Cookie Clicker,
     so we will have to be careful to know when an infinite value is indeed `+Infinity`
     or just an incorrectly-rendered `NaN`.
+
+Other than zero,
+we will rarely meet these numbers in Cookie Clicker.
 
 Effect on Counters
 ------------------
@@ -400,16 +412,15 @@ which are only ever incremented in steps of 1:
 as discussed above,
 these counters will be capped off at `2^53`.
 
-- Many statistics are simple counters.
-  All of the following are capped at `2^53`:
-  - Number of cookie clicks;
-  - Number of golden cookies clicked;
-  - Number of golden cookies missed;
-  - Number of ascensions;
-  - Number of reindeer clicked;
-  - Number of wrinklers popped;
-  - Number of garden sacrifices;
-  - Number of garden plants harvested;
+- Many statistics are simple counters;
+  the number of cookie clicks,
+  of golden cookies and reindeer clicked,
+  ascensions,
+  wrinklers popped,
+  plant harvested,
+  and even hidden statistics
+  (the number of golden cookies missed and the number of garden sacrifices)
+  are all capped at `2^53`.
 
 - Building levels are counters:
   they increment by 1 whenever you level up the building,
