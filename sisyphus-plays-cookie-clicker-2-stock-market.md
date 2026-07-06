@@ -1,5 +1,5 @@
-Sisyphus Plays Cookie Clicker II: Risk-free Stocks
-==================================================
+Sisyphus Plays Cookie Clicker II: Sisyphus the Quindecillionaire
+================================================================
 
 (This is the second of a series of articles investigating the limits of Cookie Clicker.
 In this article we investigate how many cookies we can obtain without ascending
@@ -274,3 +274,101 @@ Our hero reaches the sexvegintillionth cookie,
 earning all cookie-related achievements.
 But we are still nowhere near Infinity,
 there are more cookies to be gained.
+
+
+Sisyphus the Quindecillionaire
+------------------------------
+
+The next thing that catches Sisyphus's eyes is the stock market.
+Each $1 in the stock market corresponds to a "1 **$**econd of production".
+By selling high-valued stocks,
+Sisyphus gains several seconds of production at once;
+the hope is that these sales outpace wrinklers.
+
+[Sisyphus has read my article on the limits of stock market stocks](./stock-market-hard-cap.md),
+and knows that,
+with low-level banks,
+goods can never go beyond $65k of value.
+By redoing the math in that article with high-level banks,
+we can see that the goods values
+will always fluctuate up to $415k around the resting value of the good
+(i.e. the goods values will be between `restingValue-415k` and `restingValue+415k`).
+The resting value is `bankLevel + 9 + 10*id`;
+the `id` is a number between 0 and 17,
+and Sisyphus's bank levels are 2^53.
+The bank level dominates the goods values in Sisyphus's stock market,
+as the theoretical minimum value of 2^53-415k is only 0.0000000046% smaller
+than the bank level of 2^53.
+
+This is already enough to be sligthly better than wrinklers.
+Under optimal conditions,
+popping a wrinkler gives the equivalent of `2^51` times the current CpS,
+whereas selling a single unit of the stock market gives `2^53 * CpS` cookies.
+But the stock market also has a reservoir effect of its own:
+Sisyphus can use whatever means to purchase individual units of each good,
+then sell all of its assets at once.
+
+And Sisyphus warehouses are _big_.
+The storage capacity for each good is its highest amount of the corresponding building,
+plus a bonus from the office level,
+plus 10 times its level.
+The first two terms sum to less than 4 digits (they're smaller than 10000)
+but the last term is,
+of course, `10 * 2^53`,
+i.e. around 90 quadrillion.
+Each good unit sells for around `2^53` CpS,
+giving Sisyphus `10 * 2^106 * CpS` at once.
+And,
+again,
+Sisyphus repeats this process `2^53` times,
+yielding `10 * 2^159 * CpS`,
+rounded up to the next power of two.
+The profits in the stock market are exactly `16 * 2^159`,
+i.e. 2^175 = 11.962 quindecillion.
+Sisyphus is now a quindecillionaire.
+
+But before Sisyphus's profits skyrocket beyond the Solar System
+and crash the market so hard the 1929 crisis becomes literally a rounding error,
+he has to solve the problem of actually filling his warehouses with hundreds of quadrillions of goods.
+With wrinklers,
+his buildings generated cookies,
+which were then sucked by the wrinklers.
+But now he has to spend his hard-earned cookies directly,
+so we are adding to the reservoir from the same source we will dump into later.
+
+The IEEE754 floating-point specification,
+unexpectedly,
+offers our hero an olive branch.
+The first sale took a while,
+because Sisyphus had to slowly gather the $9 quadrillion for each good,
+then purchase a single unit of that good,
+and repeat this proces 90 quadrillion times.
+But once he sold all the goods at once,
+his bank became 90 quadrillion times higher than the cost of a single unit of each good.
+This is more than 2^54 (18 quadrillion),
+so when we purchase a single unit of that good and subtract that number from the cookie bank,
+the IEEE754 floating-point specification dictates that
+the result must round back to the same value of the cookie bank.
+Each singular stock literally becomes a rounding error,
+and Sisyphus can purchase units of each stock literally for free.
+- Technical explanation:
+  if the `c` cookies that Sisyphus has is between `2^e` and `2^(e+1)`,
+  then the `2^52` floating-point numbers represented in this interval
+  are spaced `2^(e-52)` apart.
+  If we subtract a value `v` from `c` which is smaller than `2^(e-53)`,
+  then the closest representable value to `c-v` in this interval is still `c`.
+  The exception is if `c` is exactly a power of two,
+  in which case `c - v` would fall in the previous range `[2^(e-1), 2^e)`
+  where the representable numbers are spaced `2^(e-53)` apart.
+  For this exception,
+  we must guarantee that `v` is at most `2^(e-54)`
+  (i.e. 2^54 times smaller than `c`)
+  to ensure that `c-v` rounds to `c`.
+
+With this,
+the quindecillionaire Sisyphus reaches duotrigintillion cookies.
+But the truce with IEEE754 is short-lived,
+for the stock market has one fatal flaw:
+its profits are measured in seconds of the highest _raw_ cookies per second this ascension.
+Once Sisyphus learns about combos,
+wrinklers shall be kings once more.
