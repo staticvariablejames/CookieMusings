@@ -160,3 +160,117 @@ he can simply wipe his save file and start anew,
 but this time without purchasing the birthday cookie at all.
 So our hero decides to challenge fate and purchases the upgrade on Friday, September 12th, 275760,
 getting the maximum boost of 273747%.
+And nonillions of years later,
+all buildings (except Wizard Towers) have `2^53` levels.
+This is enough to get us to vigintillion cookies.
+
+
+Wrinklers as Reservoirs
+-----------------------
+
+The next step in Sisyphus journey is the Grandmapocalypse,
+and with it,
+the wrinklers.
+Wrinkler ambergris is quickly grabbed by our hero,
+who now has to study how wrinklers suck cookies.
+
+With a single wrinkler,
+every game tick that wrinkler will suck 5% of what would be gained by Sisyphus.
+These cookies are stored in the wrinkler,
+which
+(as every number in JavaScript)
+is an IEEE754 floating-point number.
+Every game tick that number increases by `0.05 * CpS/30`
+(because Cookie Clicker's frame rate is 30),
+so after quadrillions of years
+this single wrinkler will converge to either 1/16 or 1/32 of what we have in bank.
+(The wrinkler gains, per tick, 1/20 of what Sisyphus would gain;
+because 1/20 is not a power of 2,
+the wrinkler gain could round to 1/16 or 1/32,
+depending on how far the normal gain is to the next power of two.)
+
+But the important thing here is that,
+once the wrinkler is popped,
+**Sisyphus gains all those cookies at once.**
+Even in the worst-case scenario where the cookies converged to `bank/32`,
+Sisyphus can repeat this process over and over again
+until `bank/32` becomes the precision limit.
+This happens at `2^53` times the increase,
+i.e. we increase our cookies by `2^48 * bank`.
+
+In a sense,
+wrinklers act as a cookie reservoir,
+which pretty much multiply our cookie limit by `2^53`.
+We will see this "reservoir effect" twice more in this series of articles.
+
+There are a few more wrinkles (hah) to this calculation.
+The first is what happens if there are multple wrinklers.
+With two wrinklers,
+instead of each wrinkler sucking 5% of the CpS (for a total of 10%),
+actually each wrinkler sucks 10% of the CpS.
+The actual reduction in CpS gain is still just 10%;
+hence normal players effectively experience an increase of 10% of CpS just by having two wrinklers.
+Sisyphus is operating at the extremes of IEEE754 floating-point numbers,
+so he actually experiences a much larger boost:
+withering 10% of CpS instead of just 5% doubles the cap
+on how many cookies can be stored in a single wrinkler.
+In general,
+with `n` wrinklers,
+each wrinkler suck `n/20` of the CpS;
+for example,
+with a ring of 10 wrinklers
+(the maximum that Sisyphus can get, as he cannot ascend)
+the wrinklers digest 50% of the CpS.
+This digestion rate can be further boosted by the garden plant Wrinklegill,
+increasing that number by 45% with a full garden.
+- The dragon aura Dragon Guts also boosts the digestion rate,
+  but again Sisyphus cannot train a dragon,
+  for he cannot ascend to purchase the "How to bake your dragon" heavenly upgrade.
+- Alternating rows of nursetulips and wrinklegills
+  increases the digestion rate by about 64.026%,
+  instead of just 45%,
+  but the nursetulips pretty much halve the normal CpS,
+  so how much each wrinkler digets per game tick is actually reduced.
+- The maximum (reasonable) digestion rate achievable by Sisyphus is thus 72.5%.
+  With Dragon Guts and the heavenly upgrade Elder spice,
+  we do get to 100% CpS withered,
+  but that's not accessible for Sisyphus.
+
+The second wrinkler is the bonuses that are applied after the wrinkler is popped.
+By default the game gives a 10% bonus to this number
+(i.e. there's a bonus multiplier of 1.1).
+The heavenly upgrade Sacrilegious corruption multiplies this by 1.05,
+the Easter egg Wrinklerspawn multiplies this by another 1.05,
+the dragon aura Dragon Guts multiplies this by 1.2 (or 1.22 if together with Reality Bending),
+the patheon spirit Skruuia multiplies this by 1.15 (if worshipped in the diamond slot),
+and a shiny wrinkler multiplies all of this by 3.
+(Wrinklegill only affects the withering rate,
+not the popping bonuses.)
+Multiplying all of this together,
+the bonus for popping the wrinkler maxes out at 5.10446475.
+Sisyphus cannot train a dragon or get Sacrilegious corruption,
+so he is limited to a bonus of 3.98475.
+
+The fact that Sisyphus wrinkler popping bonus is just shy of 4
+is particularly frustrating for our hero.
+He only pops wrinklers when they cannot possibly hold more cookies inside them,
+which must be a power of two
+(due to the way of how IEEE754 floating-point numbers work,
+as we have seen many times before).
+Thus this bonus is applied to a "clean" power of two,
+so they directly determine when we hit the precision limit
+from popping wrinklers like this over and over again.
+And this precision limit effectively rounds the bonus to 4
+(the next power of two after it),
+whereas even a bonus of 4.002
+(achievable with a shiny wrinkler,
+Skruuia on the ruby slot,
+and the heavenly upgrade Sacrilegious corruption and the Easter egg Wrinklerspawn)
+would round up to 8.
+
+Alas,
+Sisyphus loses that factor of two when popping wrinklers.
+Our hero reaches the sexvegintillionth cookie,
+earning all cookie-related achievements.
+But we are still nowhere near Infinity,
+there are more cookies to be gained.
