@@ -1,9 +1,10 @@
-Sisyphus Plays Cookie Clicker I: Fighting Against IEEE754
-=========================================================
+Sisyphus Plays Cookie Clicker I: Face to Face with IEEE754
+==========================================================
 
-(This is the first of a series of articles investigating the limits of Cookie Clicker.
-This article discusses how IEEE754 works
-and how it limits many counters in the game.)
+(This is the first of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
+investigating the limits of Cookie Clicker.
+This first article is mostly technical;
+we need to discuss how IEEE754 works and how it limits many counters in the game.)
 
 [Sisyphus](https://en.wikipedia.org/wiki/Sisyphus) is a character in Greek mythology
 who attracted the wrath of the Greek gods by deceitfully outsmarting them
@@ -13,13 +14,13 @@ which would inevitably fall down whenever Sisyphus neared the top,
 forcing him to start again,
 for all eternity.
 
-The Cookie Clicker God Orteil has struck a deal with the Olympus to change Sisyphus's punishment.
+The Cookie Clicker God Orteil has struck a deal with the Olympus gods to change Sisyphus's punishment.
 Instead of rolling a boulder,
 Sisyphus now has to play Cookie Clicker for all eternity.
 Once Sisyphus' bakery reaches Infinity cookies,
 Sisyphus will be released from his punishment.
 
-Sisyphus is serving his sentence in the Underworld,
+Sisyphus is serving his sentence in the Greek Underworld,
 so this is where we install a gaming computer for him,
 complete with a very good gaming chair.
 We disabled the browser's console,
@@ -102,7 +103,7 @@ The bit string representation of these numbers looks like
 
 - The next 11 bits encode the exponent.
   The bit strings `00000000000` and `11111111111` are reserved and have a special meaning;
-  we then simply encode the numbers between -1022 and 1023 in order.
+  we ignore those and simply encode the numbers between -1022 and 1023 in order.
   **This means that the exponent is constrained to be an integer between -1022 and 1023**.
   - The bit string `00000000001` encodes the number -1022;
   - The bit string `00000000010` encodes the number -1021;
@@ -193,15 +194,16 @@ the next cookie amount would be `2^53 + 1`,
 which is not representable as a floating-point number.
 Hence JavaScript _rounds that number down_ to `2^53`.
 The next click also stays at `2^53` for the same reason.
-And the next and the next.
+And the next one and the next one.
 Hence Sisyphus is stuck at `2^53` cookies,
 i.e. 9007199254740992---about 9.007 quadrillion.
 
-Hence Sisyphus must actually pay attention to other parts of the game,
+Therefore,
+Sisyphus must actually pay attention to other parts of the game,
 and the first thing that Sisyphus notices are sugar lumps.
 They also go up in integer increments,
 so Sisyphus expected its number to also get stuck at `2^53`,
-but now there are different lump types.
+but there are different lump types.
 With a bit of luck,
 a bifurcated sugar lump yields two lumps at once,
 so the number of lumps becomes `2^53+2`,
@@ -229,7 +231,7 @@ so the resulting number of cookies is `2^53+2`.
 (If you are reading this in a web browser,
 you can check this yourself:
 press F12 to open the console,
-and type `2**53 + 1.5` and `2**53 + 2` to see that they yield the same result.)
+and type `2**53 + 1.5` and then `2**53 + 2` and see that they yield the same result.)
 
 But what if the mathematical result sits exactly in the middle?
 In this case,
@@ -399,6 +401,7 @@ This is where the reserved exponents show up.
 Other than zero,
 we will rarely meet these numbers in Cookie Clicker.
 
+
 Effect on Counters
 ------------------
 
@@ -434,3 +437,16 @@ these counters will be capped off at `2^53`.
 Most of this article was spent understanding how IEEE754 works.
 In the next article,
 Sisyphus will purchase buildings and upgrades and perform combos!
+
+
+The Companion GitHub Repository
+===============================
+
+If you'd like to see Sisyphus's progress yourself,
+I have created a GitHub repository containing several save games from our hero's journey:
+<https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/>.
+You will need [Cookie Connoisseur](https://github.com/staticvariablejames/cookie-connoisseur)
+to time-travel far enough into the future and witness the game as Sisyphus saw it,
+but you should be able to get a glimpse of our hero's progress.
+
+[The save file from this first article is available here.](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus1.cki)
