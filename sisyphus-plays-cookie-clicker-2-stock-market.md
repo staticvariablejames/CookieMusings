@@ -1,7 +1,8 @@
 Sisyphus Plays Cookie Clicker II: Sisyphus the Quindecillionaire
 ================================================================
 
-(This is the second of a series of articles investigating the limits of Cookie Clicker.
+(This is the second of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
+investigating the limits of Cookie Clicker.
 In this article we investigate how many cookies we can obtain without ascending
 closing the game,
 or abusing the Grimoire spell Gambler's Fever Dream.)
@@ -26,8 +27,8 @@ As we saw in the previous article,
 the first representable number after `2^53` is `2^53+2`,
 so by getting 1.1 cookies the game rounds that amount to `2^53`.
 
-But disappointingly Sisyphus is still stuck to `2^53`!
-This is a quirk of Cookie Clicker.
+But disappointingly Sisyphus is still stuck at `2^53` cookies!
+This is due to a quirk of Cookie Clicker.
 The game increases the amount of cookies owned smoothly.
 Right now Sisyphus is gaining 1.1 cookies per second (CpS),
 but as the game runs at 30 frames per second,
@@ -72,7 +73,8 @@ Now Sisyphus can go beyond `2^53` cookies;
 in fact,
 we only get in trouble when we reach `2^56` cookies,
 because the floating-point numbers between `2^56` and `2^57` are spaced by 16
-(which is `2^56/2^52`).
+(which is `2^56/2^52`),
+and adding 6.5 to a number in this range still keeps us closer to the original number than to the next.
 
 In general,
 if Sisyphus can get `c` cookies in a single go,
@@ -98,10 +100,9 @@ which brings us to the next threshold.
 Upgrades helps us too:
 building upgrades double the CpS of each individual building,
 and cookie upgrades grant us simple CpS boosts.
-Seasonal upgrades also help.
 
 Using just buildings,
-sisyphus easily gets to decillion cookies,
+Sisyphus easily gets to [87.112 duodecillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-1.cki),
 and starts the search for more multipliers.
 
 
@@ -115,7 +116,7 @@ we need `(2^53+1)*2^53 / 2 = 2^105+2^52` lumps to fully upgrade a building.
 That's 40.5 nonillion sugar lumps per building,
 or 770 nonillion to fully upgrade all buildings.
 (Sisyphus explicitly does not upgrade the Wizard Towers,
-because leveling it up too much negatively affects the Grimoire.)
+because leveling it up too much will negatively affect the Grimoire.)
 Even if we harvested one lump per second,
 that'd still require septillions of years to complete.
 
@@ -133,7 +134,7 @@ However:
   This is because the game uses JavaScript's `Date` objects
   to calculate how many years have passed since the birth day of Cookie Clicker,
   and `Date` objects do not handle dates past September 14th, 275760.
-  - This is because `Date` objects internally track the number of milliseconds since
+  - `Date` objects internally track the number of milliseconds since
     January 1st, 1970 (the Unix epoch),
     and this limit date corresponds to `86400 * 10^11` milliseconds,
     i.e. 100 million days.
@@ -162,7 +163,7 @@ So our hero decides to challenge fate and purchases the upgrade on Friday, Septe
 getting the maximum boost of 273747%.
 And nonillions of years later,
 all buildings (except Wizard Towers) have `2^53` levels.
-This is enough to get us to vigintillion cookies.
+This is enough to get us to [842.498 vigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-2.cki).
 
 
 Wrinklers as Reservoirs
@@ -175,7 +176,7 @@ Wrinkler ambergris is quickly grabbed by our hero,
 who now has to study how wrinklers suck cookies.
 
 With a single wrinkler,
-every game tick that wrinkler will suck 5% of what would be gained by Sisyphus.
+every game tick it will suck 5% of what would be gained by Sisyphus.
 These cookies are stored in the wrinkler,
 which
 (as every number in JavaScript)
@@ -201,7 +202,7 @@ i.e. we increase our cookies by `2^48 * bank`.
 In a sense,
 wrinklers act as a cookie reservoir,
 which pretty much multiply our cookie limit by `2^53`.
-We will see this "reservoir effect" twice more in this series of articles.
+We will see this "**reservoir effect**" twice more in this series of articles.
 
 There are a few more wrinkles (hah) to this calculation.
 The first is what happens if there are multple wrinklers.
@@ -222,7 +223,7 @@ with a ring of 10 wrinklers
 (the maximum that Sisyphus can get, as he cannot ascend)
 the wrinklers digest 50% of the CpS.
 This digestion rate can be further boosted by the garden plant Wrinklegill,
-increasing that number by 45% with a full garden.
+increasing that number by 45% (i.e. withering 72.5% of the CpS) with a full garden.
 - The dragon aura Dragon Guts also boosts the digestion rate,
   but again Sisyphus cannot train a dragon,
   for he cannot ascend to purchase the "How to bake your dragon" heavenly upgrade.
@@ -230,13 +231,13 @@ increasing that number by 45% with a full garden.
   increases the digestion rate by about 64.026%,
   instead of just 45%,
   but the nursetulips pretty much halve the normal CpS,
-  so how much each wrinkler digets per game tick is actually reduced.
+  so how much each wrinkler digests per game tick is actually reduced.
 - The maximum (reasonable) digestion rate achievable by Sisyphus is thus 72.5%.
   With Dragon Guts and the heavenly upgrade Elder spice,
   we do get to 100% CpS withered,
   but that's not accessible for Sisyphus.
 
-The second wrinkler is the bonuses that are applied after the wrinkler is popped.
+The second wrinkle in the calculation is the bonuses that are applied after the wrinkler is popped.
 By default the game gives a 10% bonus to this number
 (i.e. there's a bonus multiplier of 1.1).
 The heavenly upgrade Sacrilegious corruption multiplies this by 1.05,
@@ -254,12 +255,11 @@ so he is limited to a bonus of 3.98475.
 The fact that Sisyphus wrinkler popping bonus is just shy of 4
 is particularly frustrating for our hero.
 He only pops wrinklers when they cannot possibly hold more cookies inside them,
-which must be a power of two
+and this limit must be a power of two
 (due to the way of how IEEE754 floating-point numbers work,
 as we have seen many times before).
 Thus this bonus is applied to a "clean" power of two,
-so they directly determine when we hit the precision limit
-from popping wrinklers like this over and over again.
+so they directly determine the next precision limit.
 And this precision limit effectively rounds the bonus to 4
 (the next power of two after it),
 whereas even a bonus of 4.002
@@ -270,10 +270,10 @@ would round up to 8.
 
 Alas,
 Sisyphus loses that factor of two when popping wrinklers.
-Our hero reaches the sexvegintillionth cookie,
+Our hero reaches the [121.417 sexvigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-3.cki),
 earning all cookie-related achievements.
-But we are still nowhere near Infinity,
-there are more cookies to be gained.
+But there are more cookies to be gained,
+we are still nowhere near Infinity.
 
 
 Sisyphus the Quindecillionaire
@@ -343,14 +343,14 @@ The first sale took a while,
 because Sisyphus had to slowly gather the $9 quadrillion for each good,
 then purchase a single unit of that good,
 and repeat this proces 90 quadrillion times.
-But once he sold all the goods at once,
+But when he sold all the goods at once for the first time,
 his bank became 90 quadrillion times higher than the cost of a single unit of each good.
 This is more than 2^54 (18 quadrillion),
 so when we purchase a single unit of that good and subtract that number from the cookie bank,
 the IEEE754 floating-point specification dictates that
 the result must round back to the same value of the cookie bank.
-Each singular stock literally becomes a rounding error,
-and Sisyphus can purchase units of each stock literally for free.
+Each singular good literally becomes a rounding error,
+whence Sisyphus can purchase units of each stock literally for free.
 - Technical explanation:
   if the `c` cookies that Sisyphus has is between `2^e` and `2^(e+1)`,
   then the `2^52` floating-point numbers represented in this interval
@@ -366,11 +366,11 @@ and Sisyphus can purchase units of each stock literally for free.
   to ensure that `c-v` rounds to `c`.
 
 With this,
-the quindecillionaire Sisyphus reaches duotrigintillion cookies.
+the quindecillionaire Sisyphus reaches [279.968 duotrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-4.cki).
 But the truce with IEEE754 is short-lived,
 for the stock market has one fatal flaw:
 its profits are measured in seconds of the highest _raw_ cookies per second this ascension.
-Once Sisyphus learns about combos,
+When Sisyphus learns about combos,
 wrinklers shall be kings once more.
 
 
@@ -378,9 +378,9 @@ Achievements and Combos
 -----------------------
 
 Sisyphus noted that the most impactful upgrades are usually kittens.
-These upgrades are based on milk.
-"Milk" is just the number of achievements divided by 25;
-new kittens are unlocked on increments of 1
+These upgrades are based on "milk",
+which is just the number of achievements divided by 25.
+New kittens are unlocked on increments of 1
 (meaning one new kitten every 25 achievements),
 and how much each kitten boosts production also depends on milk.
 For example,
@@ -441,8 +441,8 @@ harvesting a mature Duketater while having both Frenzy and Elder Frenzy
 gives Sisyphus `7 * 666 * 7200 * CpS = 33 566 400 * CpS` cookies.
 This is,
 of course,
-not enough to outpace the stock market;
-we need to stack more buffs,
+not enough to outpace the stock market.
+We need to stack more buffs,
 i.e. we need a better combo.
 
 Without any modifiers,
@@ -453,7 +453,7 @@ Using all upgrades that Sisyphus has available
 shrinks that range to between 63.5 and 113.73 seconds.
 Using the garden shrinks this even further:
 a garden full of mature Golden Clovers and Nursetulips speeds golden cookie times by about 192%
-meaning that these numbers are divided by 2.92;
+(meaning that these numbers are divided by 2.92)
 so the range is now between 27.76 and 65.23 seconds.
 (Selebrak cannot be used here,
 as the code that handle natural seasons stopped working in the year 275760.)
@@ -464,7 +464,7 @@ he just needs to be lucky to get two golden cookies in a row spawning within 30 
 
 The power of building specials is the number of buildings divided by 10.
 For example,
-with the 279 duotrigintillion cookies that Sisyphus got from doing stocks,
+with the 280 duotrigintillion cookies that Sisyphus got from the stock market,
 he was able to purchase 1652 cursors, 1639 grandmas and 1622 farms.
 The three building specials corresponding to these buildings
 thus multiply the CpS by 166.2, 164.9 and 163.2, respectively.
@@ -537,11 +537,29 @@ Holobore is slotted in the ruby slot after clicking all golden cookies.
 A well-timed Cyclius grants another 15% CpS.
 Once the second naturally-spawning golden cookie is clicked,
 Sisyphus plants Whiskerbloom buds to get a slight boost to milk.
-And finally the three loans from the stock market minigame.
+And finally he takes the three loans from the stock market minigame.
 Quadrillions of wrinklers fattened up and popped later,
-Sisyphus' bakery reaches 73.392 quattuortrigintillion cookies,
+Sisyphus' bakery reaches [73.392 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
 i.e. 2^355 cookies.
 
 Sisyphus has ignored the Grimoire spell Gambler's Fever Dream;
 this is the last trick up his sleeve,
 and we will analyze it in the next article.
+
+
+The Companion GitHub Repository
+===============================
+
+For this article,
+the companion repository has 5 save files,
+one for each explicitly-mentioned cookie threshold.
+- [Save 1: 87.112 duodecillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-1.cki),
+  from just using buildings.
+- [Save 2: 842.498 vigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-2.cki),
+  from leveling up buildings and purchasing the Birthday cookie.
+- [Save 3: 121.417 sexvigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-3.cki),
+  from wrinklers.
+- [Save 4: 279.968 duotrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-4.cki),
+  from the stock market.
+- [Save 5: 73.392 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
+  from achievements, combos, and wrinklers again.
