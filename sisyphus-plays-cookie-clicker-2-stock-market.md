@@ -372,3 +372,176 @@ for the stock market has one fatal flaw:
 its profits are measured in seconds of the highest _raw_ cookies per second this ascension.
 Once Sisyphus learns about combos,
 wrinklers shall be kings once more.
+
+
+Achievements and Combos
+-----------------------
+
+Sisyphus noted that the most impactful upgrades are usually kittens.
+These upgrades are based on milk.
+"Milk" is just the number of achievements divided by 25;
+new kittens are unlocked on increments of 1
+(meaning one new kitten every 25 achievements),
+and how much each kitten boosts production also depends on milk.
+For example,
+Kitten workers increase production by `milk * 12.5%`
+(i.e. CpS is multiplied by `1 + milk * 0.125`).
+The other kittens work in the same way,
+but with different constants.
+- Exception:
+  The first kitten uppgrade,
+  "Kitten helpers",
+  unlocks at 13 achievements owned, rather than the usual 25.
+
+Hence,
+Sisyphus starts achievement hunting.
+Some achievements can only be achieved on new files,
+so begrudgingly Sisyphus hard-wipes his save file to start anew.
+(These achievements are Speed Baking I, II, III; Neverclick, True Neverclick; and Hardcore.
+They can also be achieved on the "Born again" ascension mode,
+but because we are in the Greek Underworld,
+no ascensions of any kind for Sisyphus.)
+Shadow achievements don't count for milk,
+so although Sisyphus will grab them if the chance happens,
+Speed Baking I, II, and III will be forfeited in favor of Neverclick and Hardcore.
+
+Sisyphus immediately gets the several easy-to-get achievements
+(like "Stifling the press" and "Cookie-dunker").
+Seasons bring several other achievements and upgrades.
+Sisyphus does not have the "Season switcher" heavenly upgrade,
+so he has to go through the seasons naturally;
+and the code that naturally advances seasons has the same issue as the Birthday cookie
+(it stops working after the year 275760)
+but that is still plenty for Sisyphus to grab all achievements and upgrades.
+The Chocolate egg is a one-time purchase that multiplies the bank by 1.05
+(which bypasses the IEEE754 precision limitations we've been dealing with so far),
+so Sisyphus saves it as the last resort.
+
+The hunt for achievements has Sisyphus clicking reindeer,
+conjuring baked goods,
+harvesting duketaters,
+and of course clicking golden cookies.
+This is Sisyphus's first foray into combos.
+
+On their own,
+all these actions are simply too small to threaten the power of our hero's $11 quindecillion.
+For example,
+clicking a reindeer gives one minute of CpS,
+meaning that Sisyphus gets `60 * CpS` cookies at once.
+The Grimoire spell Conjure Baked Goods gives Sisyphus `1800 * CpS` cookies,
+and harvesting a mature Duketater gives `7200 * CpS` cookies.
+This is nothing compared to the $9 quadrillion
+obtained by selling a single unit of anything from Sisyphus's warehouses.
+
+But the goods from Sisyphus's warehouses are priced according to raw CpS.
+Clicking golden cookies sometimes gives us buffs,
+namely Frenzy, Building Specials, and (during the grandmapocalypse) Elder Frenzies.
+For example,
+harvesting a mature Duketater while having both Frenzy and Elder Frenzy
+gives Sisyphus `7 * 666 * 7200 * CpS = 33 566 400 * CpS` cookies.
+This is,
+of course,
+not enough to outpace the stock market;
+we need to stack more buffs,
+i.e. we need a better combo.
+
+Without any modifiers,
+golden cookies take beween 5 and 15 minutes to spawn
+(the spawn time is random, and somewhat skewed towards the average).
+Using all upgrades that Sisyphus has available
+(Lucky day, Serendipity, Golden goose egg, Green yeast digestives, Sugar blessing)
+shrinks that range to between 63.5 and 113.73 seconds.
+Using the garden shrinks this even further:
+a garden full of mature Golden Clovers and Nursetulips speeds golden cookie times by about 192%
+meaning that these numbers are divided by 2.92;
+so the range is now between 27.76 and 65.23 seconds.
+(Selebrak cannot be used here,
+as the code that handle natural seasons stopped working in the year 275760.)
+With the upgrades,
+building specials last for just over a minute.
+This means that Sisyphus can get three Building Specials,
+he just needs to be lucky to get two golden cookies in a row spawning within 30 second of each other.
+
+The power of building specials is the number of buildings divided by 10.
+For example,
+with the 279 duotrigintillion cookies that Sisyphus got from doing stocks,
+he was able to purchase 1652 cursors, 1639 grandmas and 1622 farms.
+The three building specials corresponding to these buildings
+thus multiply the CpS by 166.2, 164.9 and 163.2, respectively.
+Together with a Frenzy,
+this means that a hypothetical Duketater harvest
+would provide `7 * 166.2 * 164.9 * 163.2 * 7200 * CpS = 2.25e11 * CpS` cookies,
+which is still lower than the $9e15 of the cheapest good in Sisyphus's warehouses.
+
+Sisyphus can go further by summoning golden cookies.
+Force the Hand of Fate summons a golden (or wrath) cookie,
+independently of the spawning cycle of natural golden cookies.
+He can cast that spell six times in a row:
+first cast it with 321 wizard towers,
+sell down to 21 (making the spell cheaper),
+cast it again,
+purchase wizard towers up to 321,
+use a sugar lump to immediately refill the magic meter,
+repeat the cycle (cast, sell, cast, rebuy),
+harvest a caramelized sugar lump to clear the sugar lump cooldown,
+and repeat the cycle again.
+(Sisyphus cannot afford a seventh cast;
+Without Krumblor's Supreme Intellect,
+he would need over 3700 wizard towers for that.)
+
+These nine building specials gives Sisyphus a CpS boost of 6.52e19,
+so now the hypothetical duketater harvest yields `7 * 6.52e19 * 7200 * CpS = 3.28e24 * CpS` cookies,
+which is more than the goods in his warehouses!
+But before he decides whether to sacrifice one nursetulip or one golden clover
+to plant the lone duketater,
+he realizes that `3.28e24 * CpS` is not enough.
+Although each good in his warehouses are worth `9e15 * CpS`,
+he does not sell them one-by-one;
+he sells them wholesale,
+90 quadrillion units at a time.
+That corresponds to `9e15 * 90e15 * CpS = 8.1e32 * CpS` in a single sale,
+and what matters for handling IEEE754 floating-point precision limits
+is how many cookies we can get at once.
+In other words,
+_this combo is not strong enough to outpace the stock market's reservoir effect_.
+
+So we have to resort to a different reservoir effect,
+and go back to overfeeding wrinklers.
+We do lose the 7200 factor from the duketater,
+and gain a 1/30 factor from the game adding to wrinklers that fraction of the CpS every tick,
+but now we are feeding a reservoir instead of gaining cookies directly.
+Cashing in the reservoir is thus effectively a `2^53 = 9 quadrillion` multiplier,
+which does outpace the stock market.
+
+The effect from golden clovers only apply to golden cookies,
+not to wrath cookies.
+So Sisyphus cannot be at the latest stage of the grandmapocalypse
+if he wants to stack three building specials naturally.
+Letting the pledge go is not good enough,
+because over time the game progresses all the way through till the last stage,
+and we must remain in the grandmapocalypse for a very long time while we fatten our wrinklers.
+So,
+begrudgingly,
+Sisyphus wipes his save once more,
+this time making sure not to purchase "Elder Pact"
+and remain in the second-to-latest stage of the grandmapocalypse.
+But if he must be in the second stage of the grandmapocalypse,
+he may as well take advantage of that:
+the last building special gained from a natural golden cookie
+can be replaced with an Elder Frenzy from a natural wrath cookie.
+So he replaces a 150.3x multiplier with a 666x multiplier.
+
+Sisyphus marshalls the last few multipliers he can get his hands on.
+Worshipping Mokalsium in the diamond slot nearly quadruples the CpS.
+Holobore is slotted in the ruby slot after clicking all golden cookies.
+A well-timed Cyclius grants another 15% CpS.
+Once the second naturally-spawning golden cookie is clicked,
+Sisyphus plants Whiskerbloom buds to get a slight boost to milk.
+And finally the three loans from the stock market minigame.
+Quadrillions of wrinklers fattened up and popped later,
+Sisyphus' bakery reaches 73.392 quattuortrigintillion cookies,
+i.e. 2^355 cookies.
+
+Sisyphus has ignored the Grimoire spell Gambler's Fever Dream;
+this is the last trick up his sleeve,
+and we will analyze it in the next article.
