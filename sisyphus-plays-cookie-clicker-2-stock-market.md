@@ -535,12 +535,22 @@ Sisyphus marshalls the last few multipliers he can get his hands on.
 Worshipping Mokalsium in the diamond slot nearly quadruples the CpS.
 Holobore is slotted in the ruby slot after clicking all golden cookies.
 A well-timed Cyclius grants another 15% CpS.
-Once the second naturally-spawning golden cookie is clicked,
+And finally,
+once the second naturally-spawning golden cookie is clicked,
 Sisyphus plants Whiskerbloom buds to get a slight boost to milk.
-And finally he takes the three loans from the stock market minigame.
 Quadrillions of wrinklers fattened up and popped later,
 Sisyphus' bakery reaches [73.392 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
 i.e. 2^355 cookies.
+
+Interestingly,
+the loans from the stock market minigame do not help Sisyphus at all.
+Together they do boost CpS by a factor of 3.6,
+but each requires a downpayment corresponding to a percentage of the current bank
+(20%, 40%, and 50%, respectively).
+This means that, after the fifth wrinkler is popped,
+simply taking the first loan once erases the equivalent of one wrinkler from the bank.
+And Sisyphus pops overfed wrinklers 9 quadrillion times,
+so he has to let go of that 3.6 factor.
 
 Sisyphus has ignored the Grimoire spell Gambler's Fever Dream;
 this is the last trick up his sleeve,
