@@ -106,3 +106,55 @@ but if GFD picks FtHoF the total cost is `4 + 23/2 = 15.5`.
 Preserving this extra half-point of magic
 could reduce the minimum number of towers needed to get 13 FtHoF casts,
 but is not enough to get a 14th cast.
+
+
+Threading the Needle
+--------------------
+
+Sisyphus has read my [primer on pseudorandom number generators](https://github.com/staticvariablejames/ChooseYourOwnLump#randomness-and-planners)
+and knows that Grimoire spell outcomes are seeded
+based on the `Game.seed` and on the total number of spells cast so far.
+The number of spells cast so far is,
+of course,
+an IEEE754 floating-point number,
+so it stops increasing once it reaches `2^53`.
+When this happens,
+all the outcomes from the grimoire share the same seed,
+making them highly correlated.
+This means that Sisyphus had to wipe his save a few times
+until he landed on a `Game.seed` that gives the needed outcomes;
+i.e. casting GFD lands on FtHoF,
+and this FtHoF has a building special as the outcome.
+
+In fact,
+this extremely high correlation of seeds almost worked against Sisyphus here.
+The outcome of a cast also depends on the current state of the game.
+Specifically,
+for GFD,
+the game only considers the affordable spells when selecting the spell to be cast.
+With 1556 towers and a full magic meter, all 8 spells can be afforded,
+but if we only have 14 max magic and 12 current magic,
+Spontaneous Edifice and Resurrect Abomination are not affordable anymore.
+
+The problem is in how the game uses the PRNG to pick a candidate from a list.
+The game first builds the list of affordable spells,
+then it rolls a rational number `r` between 0 and 1,
+multiplies `r` by the list length,
+and chooses the item `floor(length * r)` of the list.
+Because the seeds are the same,
+the number `r` will always be the same,
+so depending on how the list is constructed
+it could very well be that GFD yields a different outcome,
+despite starting from the same seed.
+If, say, the spells were declared in a different order
+in <https://orteil.dashnet.org/cookieclicker/minigameGrimoire.js>,
+it could very well be that getting the 13 building specials this way would be impossible.
+
+Thankfully for Sisyphus,
+there are seeds where GFD picks FtHoF for all 13 casts.
+(The companion repository
+[has a seed-searching script](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/src/seed-search.ts).
+In this case,
+the lexicographically least seed satisfying this property is `aaadj`.)
+Sisyphus merrily continues his journey,
+unaware of this bit of luck he had.
