@@ -289,3 +289,83 @@ Sisyphus can combine the refund mechanic
 with the fact that the cost of the target spell is decided during the GFD cast phase.
 This will allow Sisyphus to cast FtHoF more times than normal,
 as follows.
+
+
+Buffs, Buffs, Buffs
+-------------------
+
+Sisyphus starts with 517 level 1 Wizard towers,
+giving him 100 max magic.
+GFD self-cost is 8 and FtHoF's cost is 70.
+He quickly casts GFD 8 times in succession,
+depleting 64 magic.
+All these casts target FtHoF,
+and will attempt casting it with a cost of 35.
+
+Then,
+before any of these GFD casts resolve,
+Sisyphus sells down to 49 Wizard towers,
+bringing him down to 36 max magic.
+GFD self-cost is now 4, and FtHoF's cost is 31.
+He starts quickly casting GFD once again,
+always staying under 35 magic.
+Initially he casts GFD 5 times, depleting 20 magic.
+Next,
+whenever one of the 8 initial GFD casts resolve,
+it attempts casting FtHoF for 35 magic,
+but there is not enough magic for it to be cast.
+So all 8 casts fail,
+and refund the GFD self-cost of 8 magic each.
+Sisyphus quickly casts GFD again twice for each of the failed resolutions.
+Now he has 21 GFD casts pending resolution,
+each of them with a self-cost of 4 and attempting to cast FtHoF for 15.5 magic.
+
+In the third stage,
+Sisyphus sells down to just 6 Wizard towers.
+Max magic is 11, GFD self-cost is 3, FtHoF costs 16.
+This is the trickiest part of this combo execution:
+Sisyphus casts GFD once,
+and whenever one of the 21 pending casts resolve,
+he cast GFD once more.
+Each of the resolutions fail and refund the magic,
+but by alternating between a resolution and a new GFD cast,
+Sisyphus's magic will alternate between the max 11 (when the resolution refunds the 4 magic)
+and 8 (after paying the self-cost of GFD with 11 max magic).
+Now Sisyphus has 22 unresolved GFD casts,
+all of them with a self-cost of 3 and attempting to cast FtHoF for 8 magic.
+
+In the fourth stage,
+Sisyphus can sit back and watch the spells resolve.
+- In the last batch of 22 GFD casts,
+  the first one resolves successfully,
+  yielding a FtHoF cast and bringing the current magic down to 0.
+- The next three GFD casts fail (each one refunding 3 magic)
+  but the fifth succeeds,
+  yielding another FtHoF and bringing current magic to 1.
+- The 6th, 7th and 8th casts again fail; the 9th succeeds,
+  yielding a third FtHoF and bringing current magic to 2.
+- The 10th and 11th casts fail,
+  bringing the current magic to 8.
+  We are back where we started,
+  so this cycle repeats,
+  yielding three more FtHoF casts.
+
+Of course,
+Sisyphus has to be quick to do all of this,
+but an eternity pushing a massive boulder up a hill over and over again
+has honed his motor capabilities.
+
+Sisyphus has wasted a bunch of magic in this process.
+Between stages 2 and 3,
+he had 20 magic but lowered down to 11 (wasting 9 magic),
+and converting between the second batch of GFD casts to the third batch of GFD casts
+exchanged 4 magic for 3 magic
+(wasting another 21 magic).
+So he knows that he could have extracted even more FtHoF casts from 100 magic.
+Perhaps starting with more max magic, even?
+But six casts are enough:
+he can repeat this three times,
+granting him 18 building specials.
+Together with the two building specials obtained from naturally-spawned golden cookies,
+he gets all 20 building specials in his combo.
+[Sisyphus now has 2.907 quattuorquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-1.cki).
