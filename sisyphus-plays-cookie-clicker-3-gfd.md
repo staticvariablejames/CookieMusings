@@ -158,3 +158,134 @@ In this case,
 the lexicographically least seed satisfying this property is `aaadj`.)
 Sisyphus merrily continues his journey,
 unaware of this bit of luck he had.
+
+
+Bugs, Bugs, Bugs
+----------------
+
+    Programmer has a problem.
+    "I know, I will use threads!"
+    Programmer has two problems.
+
+(Or, more likely, `twoProgrammer problems. has `)
+
+Sisyphus immediately noticed that GFD has a 1-second delay between casting and resolving
+(i.e. casting the spell chosen by GFD).
+In detail,
+GFD is split in two steps:
+1. The **cast**,
+   in which GFD picks a _target_ spell to cast,
+   memorizes its cost,
+   and charges the GFD "self cost" (3 magic + 5% of max magic).
+2. The **resolution**,
+   which happens one second later,
+   in which GFD casts the target spell,
+   and charges the target's spell cost.
+
+This means that GFD's code is _asynchronous_:
+parts of it happen in different points in time.
+When the second part of GFD (the resolution) happens,
+the underlying game state may have changed,
+so the code has to account for that.
+But Cookie Clicker's code does not account for everything.
+Asynchronous code is notoriously difficult to get right,
+and Orteil didn't.
+
+The most prominent bug is "scrying".
+After any spell is cast,
+the spells cast counter is increased.
+The resolution step of GFD,
+however,
+uses the _current_ counter and does not increase it afterwards.
+This means that manually casting the same spell chosen by GFD
+will use the same PRNG seed.
+The most important use case of this is precisely when GFD picks FtHoF,
+because the FtHoF outcome will be the same,
+so we effectively _scry_ the buff obtained from the next FtHoF cast.
+(Two caveats: the GFD cast has a higher chance of backfiring,
+so the outcomes may differ if the GFD cast backfires and the normal cast does not;
+and there are some game states that alter FtHoF behavior,
+like the current season and whether there's an active Dragonflight buff or not.)
+Sisyphus technically cannot make use of this bug anymore,
+because his spells cast counter is permanently stuck at `2^53`,
+so the current and past spells cast counters are all the same.
+
+Cookie Clicker has no means of halting the resolution step of a GFD cast.
+(In technical terms,
+the `setTimeout` id is never stored anywhere.)
+This means that if,
+for example,
+a different save file is loaded in-between the cast and resolution steps,
+Cookie Clicker will still try to cast the target spell anyway,
+using the cost calculated during the cast step.
+So if the "donor save" (where GFD is cast) has very cheap spells due to a low max magic,
+and the "receiving save" (where GFD resolves) has a large pool of magic,
+the receiving save will be able to cast the target spell multiple times more than it should have,
+not only due to paying a cheaper cost to cast the spell,
+but also for not having to pay the GFD's "self cost".
+Sisyphus is not able to abuse this bug because,
+in the very beginning of this series of articles,
+we forbade him from loading save files at all.
+
+The game does make a half-baked effort in stopping this
+by checking whether `Game.seed` changed between cast and resolution;
+if it did, the resolution step is aborted.
+This does prevent a cast from being transferred between two unrelated save files,
+and (usually) prevents a cast from resolving after ascending;
+but the player can always take two save files from the same lineage
+(ensuring that `Game.seed` stays the same)
+or roll again into the same `Game.seed` after ascending.
+(Of course Sisyphus is unable to exploit this.)
+
+Cookie Clicker also does not store anywhere in the save file
+the information that a GFD cast is "in transit".
+This means that if we save the game between the cast and the resolution,
+loading that save again will have advanced the spells cast counter
+without experiencing the effects of the resolution step.
+This specific bug is more niche,
+as it only advances the spells cast counter for cheap,
+so Sisyphus is not able to exploit it.
+
+But the one thing that Sisyphus will be able to exploit is the refund mechanic.
+Besides succeeding and backfiring,
+a spell can _fail to cast_.
+Stretch Time refuses to do anything if there are no buffs to affect.
+A successful Spontaneous Edifice cannot create buildings past 400,
+and a backfired one cannot destroy buildings if there are none.
+Resurrect Abomination does nothing outside of the grandmapocalypse;
+a successful cast cannot create more wrinklers than there is space for,
+and a backfired cast cannot kill wrinklers if there are none.
+But most importantly,
+if there is not enough magic for the target spell when GFD resolves,
+the cast also fails.
+In case of failure,
+GFD refunds the magic spent on GFD during the casting step
+(the self cost).
+GFD itself can fail if there are no viable candidates for the target spell,
+but GFD does not pick GFD as the target spell.
+
+(The refund mechanism has a bug of its own.
+Refunding simply adds the GFD self-cost to the current magic meter.
+If this brings the current magic to above the max magic,
+in the next `Game.Logic()` tick the issue is fixed and the additional magic is erased.
+Hence,
+until the next tick happens,
+there will be a few frames where the current magic is higher than the max magic.)
+
+Some possible exploit avenues were already blocked by Sisyphus condition.
+For example,
+when transferring a GFD cast between saves,
+if the spells in the "donor save" are too expensive for the "receiving save",
+the magic will be refunded in the receiving save,
+thus essentially instantaneously giving magic to the receiving save.
+Similarly,
+if we ascend and stay in the same seed,
+a refund from a cast made before ascending
+allows us to start the next ascension with more magic than what would normally be possible.
+But not being able to load saves nor ascend prevents Sisyphus from abusing these exploits.
+
+However,
+Sisyphus can combine the refund mechanic
+with the fact that the cost of the target spell is decided during the GFD cast phase.
+This will allow Sisyphus to cast FtHoF more times than normal,
+as follows.
