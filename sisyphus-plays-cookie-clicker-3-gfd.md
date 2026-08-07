@@ -369,3 +369,111 @@ granting him 18 building specials.
 Together with the two building specials obtained from naturally-spawned golden cookies,
 he gets all 20 building specials in his combo.
 [Sisyphus now has 2.907 quattuorquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-1.cki).
+
+
+Stopping Time
+-------------
+
+All of these cookies were achieved by overfeeding and popping wrinklers.
+Their reservoir effect essentially gives them a multiplier of `2^53`
+over what they would normally provide.
+Click Frenzies are nowhere near powerful enough to make clicking more powerful than wrinklers,
+even when accounting for the fact that wrinklers only take 1/30th of the CpS per tick.
+
+But now that Sisyphus has mastered abusing GFD,
+he can overcome wrinklers with an artificial reservoir of sorts,
+by harnessing the power of Godzamok.
+
+When Godzamok is worshipped, say, in the diamond slot,
+selling buildings grants the buff "Devastation" for 10 seconds.
+Each building sold increases the clicking power by 1%.
+Multiple buildings can be sold to increase the power of Godzamok's buff,
+but they will not increase the length of the buff.
+Devastation is still just a regular buff, though,
+and the Grimoire spell Stretch Time works on it.
+Of course the strength of Devastation is stored as an IEEE754 floating-point variable,
+so we want to sell buildings 9 quadrillion times to maximize it.
+The goal is thus to somehow cast Stretch Time so many times
+to make the duration of Devastation long enough to perform the 9 quadrillion building sales.
+
+Each successful cast of Stretch Time increases the timer on the buff by 10%,
+up to a cap of 5 additional minutes.
+This increase is based on the max time,
+so even a nearly depleted buff can be stretched back to life.
+Starting with 100 magic,
+if GFD always picks Stretch Time
+we can cast it 7 times in a row,
+nearly doubling the max time
+(`1.1^7 = 1.9487171`),
+and having a cap of 35 extra minutes.
+Since the sugar lump refill cooldown for minigames is 15 minutes,
+once a buff has a duration longer than 462 seconds
+we can stretch it indefinitely.
+(This does mean that Sisyphus will have to wipe his save one last time
+to get an appropriate seed,
+as the one used for the previous save had GFD targetting FtHoF instead of Stretch Time.)
+
+Devastation has an initial duration of 10 seconds;
+stretching it 41 times raises its max time to 497.85 seconds,
+allowing it to be further stretched indefinitely.
+Hence Sisyphus has to somehow cast Stretch Time 41 times in a row.
+And he achieves that with more GFD abuse,
+of course.
+
+If Sisyphus has no buffs,
+Stretch Time will fail to cast.
+But while the unresolved GFD cast is waiting for its time,
+the natural magic regeneration of one unit every dozens of seconds will still be active.
+So Sisyphus can cast GFD a few times,
+and whenever a GFD resolves (and refunds its cost),
+cast GFD again.
+Since the magic meter will never be full this way,
+after many minutes juggling these GFDs Sisyphus will have enough magic to cast GFD one more time.
+This means that,
+over time,
+Sisyphus stores more and more magic ready to be refunded in the unresolved casts.
+Several hours later,
+Sisyphus can sell some cursors to trigger Godzamok,
+and let all the unresolved casts resolve.
+Most of them will simply become refunds,
+but a few of them will actually cast Stretch Time.
+With e.g. 9 Wizard towers,
+GFD cost 3 and Stretch Time cost 10,
+so to pay for all the 41 Stretch Times needed Sisyphus has to juggle 69 GFD casts.
+This does mean that Sisyphus has to sustain 69 clicks per second for a few hours;
+good thing he honed his body lifting that massive boulder, right?
+
+Sisyphus laments that he _almost_ had a much less stressful way of achieving this goal.
+If he had been allowed to close his game in the beginning of his journey,
+he could achieve the result of stretching a Devastation buff using caramelized sugar lumps.
+Harvesting one of those clears lump cooldowns instantly,
+but existing buffs only tick down while the game is open,
+so by getting lucky with the lump types
+and only playing a few instants per day
+Sisyphus could stretch a single Devastation buff to beyond the 462 seconds threshold
+in only a few years.
+Then,
+by ensuring that this buff is always the longest,
+he can let other buffs run out before starting a new combo.
+(Once he purchases more buildings,
+he has to at least let the building specials run out,
+in order to pick them up again but accounting for the higher building count.)
+
+In any case,
+that sufficed.
+Sisyphus stretched a Devastation buff long enough to sell cursors 9 quadrillion times.
+He can sell a bit over 2300 cursors at a time,
+increasing the buff power by about 23 each time,
+so the maximum power of the buff is `2^58`.
+This "artificial reservoir" is finally enough to overcome the `2^53` factor from wrinklers,
+just barely.
+Sisyphus can, of course,
+gather all 20 building specials, an Elder Frenzy, and a Click Frenzy
+using the same method.
+He can even get his hands on a few additional multipliers:
+Sisyphus can finally complete the Grandmapocalypse,
+netting him a few extra achievements and upgrades;
+and he can plant whiskerblooms to increase CpS,
+rather than using the garden to get more golden cookies.
+Sisyphus leaves wrinklers behind,
+and reaches [3.049 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki).
