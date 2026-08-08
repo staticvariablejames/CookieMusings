@@ -477,3 +477,98 @@ and he can plant whiskerblooms to increase CpS,
 rather than using the garden to get more golden cookies.
 Sisyphus leaves wrinklers behind,
 and reaches [3.049 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki).
+
+
+The Final Trick: Buildings as Ineffective Reservoirs
+----------------------------------------------------
+
+Sisyphus has employed pretty much every single multiplier he has access to;
+the only exception is the Chocolate egg,
+which he will use as the absolute last resort... which will happen in a few paragraphs.
+He starts selling his buildings to extract the maximum out of the Chocolate egg,
+but as he does so,
+he notices that he is actually surpassing his previous limit of 3 sexquadragintillion cookies,
+even if just by a little.
+"I think I can squeeze a few more cookies past the IEEE754 floating-point limitations!"
+
+So far,
+Sisyphus has only purchased buildings.
+Whenever he hits a new cookie limit,
+he uses the cookies in bank to purchase buildings.
+He then reaches the limit again,
+and purchases buildings again.
+The last few units of each building all have to be purchased one by one;
+for example,
+the 2309th Cursor costed Sisyphus 1.793 sexquadragintillion cookies,
+which is more than half of the limit of 3.049 sexquadragintillion cookies
+that Sisyphus has reached in the previous step.
+Hence he can only purchase that one cursor,
+before having to grind back to 3.049 sexquadragintillion cookies.
+He then purchases another cursor,
+and so on,
+until he reaches the limit of 2312 cursors.
+(The 2313th cursor would cost 3.136 sexquadragintillion cookies,
+which is more than what Sisyphus can have in bank.)
+
+But selling all those cursors is worth 5.227 sexquadragintillion cookies.
+Sure,
+Sisyphus only gets 25% of what he paid back,
+and the bulk of the sale comes from the last few cursors;
+but those sales are still enough to push Sisyphus beyond the limit he previously had.
+The cursors had behaved like a cookie reservoir,
+even if much less powerful than the other reservoirs that Sisyphus has dealt with.
+
+This brings Sisyphus to 9.06 sexquadragintillion cookies.
+Of course he cannot use those cookies to purchase more cursors,
+as he has just sold all of them to reach this number.
+But Sisyphus can purchase more grandmas.
+The 2299th grandma costs 3.398 sexquadragintillion cookies
+and the 2300th grandma costs 3.908 sexquadragintillion cookies.
+Then Sisyphus repeats the same process of grinding back to 2312 cursors and selling them all at once,
+and purchases the 2301st grandma;
+and so on.
+This process ends with 2307 grandmas,
+as the 2308th would cost Sisyphus 10.395 sexquadragintillion cookies.
+
+But now selling all those grandmas nets Sisyphus 17.325 sexquadragintillion cookies.
+Together with the 9.06 sexquadragintillion cookies from cursors,
+now Sisyphus can reach 28.984 sexquadragintillion cookies.
+Now he can purchase more farms!
+
+The entire process repeats all the way until You,
+the last building.
+Sisyphus actually has to start with Wizard towers, rather than Cursors,
+because he has to frequently sell towers to lower the max magic.
+These reservoirs are imperfect,
+as they are filled from the same source that they will fill later;
+for this last trick,
+only the building at "the bottom" can be sold and purchased freely,
+so it has to be Wizard towers.
+Finally,
+before purchasing the buildings,
+Sisyphus can fill his garden with cheapcaps,
+cast Crafty Pixies,
+and worship Dotjeiess,
+to get another building here and there.
+This gives Sisyphus [13.481 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki).
+
+And finally,
+Sisyphus realizes that these higher building counts yields better building specials.
+He started out by having "You"s as the last building in the chain,
+but he can also have Chancemakers as the last building,
+and so on.
+Every time he performs this buildings-as-reservoirs trick,
+he can grab a building special with the highest building and stretch it indefinitely.
+So by performing this trick 18 more times
+(one for each building besides Wizard towers)
+he can extract a few more cookies by having slightly better building specials active.
+
+Sisyphus is sure that changing the order at which he purchases buildings
+could net a few further cookies,
+but he has given up on meaningful increases to his limit.
+He sells all buildings and finally purchases the Chocolate egg:
+[57.263 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki)
+(`5.726333226941876e+151`,
+a bit over `2^504`)
+is his final answer.
+He cannot get any more cookies without ascending.
