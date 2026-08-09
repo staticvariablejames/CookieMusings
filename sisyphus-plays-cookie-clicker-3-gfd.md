@@ -473,10 +473,12 @@ using the same method.
 He can even get his hands on a few additional multipliers:
 Sisyphus can finally complete the Grandmapocalypse,
 netting him a few extra achievements and upgrades;
-and he can plant whiskerblooms to increase CpS,
-rather than using the garden to get more golden cookies.
+he can plant whiskerblooms to increase CpS,
+rather than using the garden to get more golden cookies;
+and he can get the three loans and stretch them too,
+paying their cost only once this way.
 Sisyphus leaves wrinklers behind,
-and reaches [3.049 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki).
+and reaches [12.194 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki).
 
 
 The Final Trick: Buildings as Ineffective Reservoirs
@@ -499,18 +501,18 @@ He then reaches the limit again,
 and purchases buildings again.
 The last few units of each building all have to be purchased one by one;
 for example,
-the 2309th Cursor costed Sisyphus 1.793 sexquadragintillion cookies,
-which is more than half of the limit of 3.049 sexquadragintillion cookies
+the 2318th Cursor costed Sisyphus 6.308 sexquadragintillion cookies,
+which is more than half of the limit of 12.194 sexquadragintillion cookies
 that Sisyphus has reached in the previous step.
 Hence he can only purchase that one cursor,
-before having to grind back to 3.049 sexquadragintillion cookies.
+before having to grind back to 12.194 sexquadragintillion cookies.
 He then purchases another cursor,
 and so on,
-until he reaches the limit of 2312 cursors.
-(The 2313th cursor would cost 3.136 sexquadragintillion cookies,
+until he reaches the limit of 2322 cursors.
+(The 2323rd cursor would cost 12.688 sexquadragintillion cookies,
 which is more than what Sisyphus can have in bank.)
 
-But selling all those cursors is worth 5.227 sexquadragintillion cookies.
+But selling all those cursors is worth 21.146 sexquadragintillion cookies.
 Sure,
 Sisyphus only gets 25% of what he paid back,
 and the bulk of the sale comes from the last few cursors;
@@ -518,21 +520,21 @@ but those sales are still enough to push Sisyphus beyond the limit he previously
 The cursors had behaved like a cookie reservoir,
 even if much less powerful than the other reservoirs that Sisyphus has dealt with.
 
-This brings Sisyphus to 9.06 sexquadragintillion cookies.
+This brings Sisyphus to 36.512 sexquadragintillion cookies.
 Of course he cannot use those cookies to purchase more cursors,
 as he has just sold all of them to reach this number.
 But Sisyphus can purchase more grandmas.
-The 2299th grandma costs 3.398 sexquadragintillion cookies
-and the 2300th grandma costs 3.908 sexquadragintillion cookies.
-Then Sisyphus repeats the same process of grinding back to 2312 cursors and selling them all at once,
-and purchases the 2301st grandma;
+The 2310th grandma costs 13.747 sexquadragintillion cookies
+and the 2311st grandma costs 15.809 sexquadragintillion cookies.
+Then Sisyphus repeats the same process of grinding back to 2322 cursors and selling them all at once,
+and purchases the 2312nd grandma;
 and so on.
-This process ends with 2307 grandmas,
-as the 2308th would cost Sisyphus 10.395 sexquadragintillion cookies.
+This process ends with 2316 grandmas,
+as the 2317th would cost Sisyphus 36.568 sexquadragintillion cookies.
 
-But now selling all those grandmas nets Sisyphus 17.325 sexquadragintillion cookies.
-Together with the 9.06 sexquadragintillion cookies from cursors,
-now Sisyphus can reach 28.984 sexquadragintillion cookies.
+But now selling all those grandmas nets Sisyphus 60.947 sexquadragintillion cookies.
+Together with the 36.512 sexquadragintillion cookies from cursors,
+now Sisyphus can reach 106.601 sexquadragintillion cookies.
 Now he can purchase more farms!
 
 The entire process repeats all the way until You,
@@ -550,7 +552,7 @@ Sisyphus can fill his garden with cheapcaps,
 cast Crafty Pixies,
 and worship Dotjeiess,
 to get another building here and there.
-This gives Sisyphus [13.481 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki).
+This gives Sisyphus [109.692 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki).
 
 And finally,
 Sisyphus realizes that these higher building counts yields better building specials.
@@ -567,8 +569,76 @@ Sisyphus is sure that changing the order at which he purchases buildings
 could net a few further cookies,
 but he has given up on meaningful increases to his limit.
 He sells all buildings and finally purchases the Chocolate egg:
-[57.263 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki)
-(`5.726333226941876e+151`,
-a bit over `2^504`)
+[231.662 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki)
+(`2.3166211683437614e+152`,
+a bit over `2^506`)
 is his final answer.
 He cannot get any more cookies without ascending.
+
+
+94% of the achievements done!
+-----------------------------
+
+Sisyphus takes stock of what he achieved.
+
+He has purchased 583 upgrades (which is 81% of the 717 available in the game);
+he is only missing synergies, fortunes, dragon drops, cookies from the several heavenly upgrades,
+and the Heavenly chip secret series of upgrades.
+All of these are only unlocked by purchasing heavenly upgrades,
+which Sisyphus has no access to.
+
+He has purchased over 2000 units of all buildings.
+He got 2062 Yous and 2483 Cursors,
+although not at the same time
+(he had to perform the buildings-as-reservoirs trick to get these numbers).
+
+And he has achieved 590 achievements (which is 94% of the 622 available in the game).
+He got all the cookie-related achievements and all building-related achievements,
+plus many minigame and miscellaneous achievements.
+
+He is missing, of course,
+all achievements related to ascension numbers and ascending with certain amount of cookies baked.
+Some other achievements require heavenly upgrades to unlock,
+like "Here be dragon" (fully train Krumblor),
+"No time like the present" (receiving gifted cookies),
+"O fortuna" (own every fortune upgrade),
+and "Debt evasion" (ascending with an active loan).
+And the last two achievements for owning a certain number of upgrades
+can only be achieved after he unlocks more upgrades.
+
+Four omissions are strategic.
+Sisyphus has not leveled up his Wizard towers,
+in order to have more flexibility with max magic,
+so he does not have the achievement for having leveled up them to 10.
+And the shadow achievements Speed Baking I, II, and III
+were given up in favor getting Neverclick and Hardcore at the same time.
+
+But perhaps the most interesting omission from his list of achievements
+is "Speed's the name of the game", the very last production achievement.
+It is awarded for baking 100 septendecillion cookies per second,
+and Sisyphus is limited to 30.524 septendecillion cookies per second.
+
+Sisyphus has asked Asopus to subit a pledge on his behalf to the Olympus gods
+to allow him to ascend in Cookie Clicker.
+The gods will be reviewing Sisyphus's pledge in a council meeting,
+to determine whether to allow Sisyphus to ascend,
+and if so,
+under which restrictions.
+But the meeting will happen in the next article.
+
+
+The Companion GitHub Repository
+===============================
+
+For this article,
+the companion repository again has 5 save files.
+- [Save 1: 2.644 quadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-1.cki),
+  from using GFD the intended way.
+- [Save 2: 2.907 quattuorquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-2.cki),
+  from abusing GFD's refund mechanic to get all 20 building specials.
+- [Save 3: 12.194 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki),
+  by using Stretch Time and a maxed-out Godzamok.
+- [Save 4: 109.692 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki),
+  by doing the buildings-as-reservoirs trick.
+- [Save 5: 231.662 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-5.cki),
+  by maxing out building specials and purchasing the Chocolate egg.
