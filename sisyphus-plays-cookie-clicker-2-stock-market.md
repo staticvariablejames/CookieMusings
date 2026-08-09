@@ -3,7 +3,7 @@ Sisyphus Plays Cookie Clicker II: Sisyphus the Quindecillionaire
 
 (This is the second of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
-In this article we investigate how many cookies we can obtain without ascending
+In this article we investigate how many cookies we can obtain without ascending,
 closing the game,
 or abusing the Grimoire spell Gambler's Fever Dream.)
 
@@ -65,7 +65,7 @@ or 24.4/30 cookies per frame;
 hence no more cookies are awarded.
 Thankfully,
 Sisyphus unlocks upgrades for the cursors.
-"Renforced index finger", "Carpal tunnel prevention cream" and "Ambidextrous"
+"Reinforced index finger", "Carpal tunnel prevention cream" and "Ambidextrous"
 each double the productivity of each cursor,
 so now Sisyphus' 244 cursors produce 195.2 cookies per second,
 which amounts to about 6.5 cookies per frame.
@@ -269,7 +269,7 @@ and the heavenly upgrade Sacrilegious corruption and the Easter egg Wrinklerspaw
 would round up to 8.
 
 Alas,
-Sisyphus loses that factor of two when popping wrinklers.
+Sisyphus misses on that factor of two when popping wrinklers.
 Our hero reaches the [121.417 sexvigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-3.cki),
 earning all cookie-related achievements.
 But there are more cookies to be gained,
@@ -308,7 +308,7 @@ But the stock market also has a reservoir effect of its own:
 Sisyphus can use whatever means to purchase individual units of each good,
 then sell all of its assets at once.
 
-And Sisyphus warehouses are _big_.
+And Sisyphus's warehouses are _big_.
 The storage capacity for each good is its highest amount of the corresponding building,
 plus a bonus from the office level,
 plus 10 times its level.
@@ -518,13 +518,13 @@ not to wrath cookies.
 So Sisyphus cannot be at the latest stage of the grandmapocalypse
 if he wants to stack three building specials naturally.
 Letting the pledge go is not good enough,
-because over time the game progresses all the way through till the last stage,
+because over time the game progresses all the way through the last stage,
 and we must remain in the grandmapocalypse for a very long time while we fatten our wrinklers.
 So,
 begrudgingly,
 Sisyphus wipes his save once more,
 this time making sure not to purchase "Elder Pact"
-and remain in the second-to-latest stage of the grandmapocalypse.
+and remaining in the second-to-latest stage of the grandmapocalypse.
 But if he must be in the second stage of the grandmapocalypse,
 he may as well take advantage of that:
 the last building special gained from a natural golden cookie
@@ -539,8 +539,8 @@ And finally,
 once the second naturally-spawning golden cookie is clicked,
 Sisyphus plants Whiskerbloom buds to get a slight boost to milk.
 Quadrillions of wrinklers fattened up and popped later,
-Sisyphus' bakery reaches [73.392 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
-i.e. 2^355 cookies.
+Sisyphus' bakery reaches [146.784 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
+i.e. 2^356 cookies.
 
 Interestingly,
 the loans from the stock market minigame do not help Sisyphus at all.
@@ -571,5 +571,5 @@ one for each explicitly-mentioned cookie threshold.
   from wrinklers.
 - [Save 4: 279.968 duotrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-4.cki),
   from the stock market.
-- [Save 5: 73.392 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
+- [Save 5: 146.784 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
   from achievements, combos, and wrinklers again.
