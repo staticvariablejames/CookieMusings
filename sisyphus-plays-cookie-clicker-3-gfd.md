@@ -1,11 +1,9 @@
 Sisyphus Plays Cookie Clicker III: Sisyphus Goes Gambling
 =========================================================
 
-(This is the second of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
+(This is the third of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
-In this article we investigate how many cookies we can obtain without ascending
-closing the game,
-or abusing the Grimoire spell Gambler's Fever Dream.)
+In this article we reach the limit of cookies obtainable without ascending.)
 
 [In the previous article](./sisyphus-plays-cookie-clicker-2-stock-market.md),
 Sisyphus used almost all tools available to him
@@ -27,7 +25,7 @@ and cast the spell as it is intended to be cast.
 
 
 Half the price, double the fun!
-===============================
+-------------------------------
 
 The cost of spells in the Grimoire is a bit peculiar,
 in that they increase with the available max magic.
@@ -50,7 +48,7 @@ Sisyphus can then buy Wizard towers until the max magic becomes 81 again,
 use a sugar lump to refill the magic,
 and double-cast FtHoF again.
 Sugar lump refills have a cooldown,
-and can only be executed once every 15 minutes.
+and can only be used once every 15 minutes.
 This is too long for our purposes,
 as Building Specials only last for one minute.
 But there are caramelized sugar lumps:
@@ -102,7 +100,7 @@ Interestingly,
 the cost halving from GFD preserves the decimal.
 E.g. if we start with 23 max magic,
 GFD costs `floor(3 + 0.05*23) = 4` and FtHoF costs `floor(10 + 0.6*23) = 23`,
-but if GFD picks FtHoF the total cost is `4 + 23/2 = 15.5`.
+so if GFD picks FtHoF the total cost is `4 + 23/2 = 15.5`.
 Preserving this extra half-point of magic
 could reduce the minimum number of towers needed to get 13 FtHoF casts,
 but is not enough to get a 14th cast.
@@ -172,7 +170,7 @@ Bugs, Bugs, Bugs
 Sisyphus immediately noticed that GFD has a 1-second delay between casting and resolving
 (i.e. casting the spell chosen by GFD).
 In detail,
-GFD is split in two steps:
+Gambler's Fever Dream is split in two steps:
 1. The **cast**,
    in which GFD picks a _target_ spell to cast,
    memorizes its cost,
@@ -196,7 +194,7 @@ After any spell is cast,
 the spells cast counter is increased.
 The resolution step of GFD,
 however,
-uses the _current_ counter and does not increase it afterwards.
+_uses the current counter and does not increase it afterwards_.
 This means that manually casting the same spell chosen by GFD
 will use the same PRNG seed.
 The most important use case of this is precisely when GFD picks FtHoF,
@@ -238,7 +236,7 @@ or roll again into the same `Game.seed` after ascending.
 (Of course Sisyphus is unable to exploit this.)
 
 Cookie Clicker also does not store anywhere in the save file
-the information that a GFD cast is "in transit".
+the information that a GFD cast is pending resolution.
 This means that if we save the game between the cast and the resolution,
 loading that save again will have advanced the spells cast counter
 without experiencing the effects of the resolution step.
@@ -264,13 +262,13 @@ GFD refunds the magic spent on GFD during the casting step
 GFD itself can fail if there are no viable candidates for the target spell,
 but GFD does not pick GFD as the target spell.
 
-(The refund mechanism has a bug of its own.
+The refund mechanism has a bug of its own.
 Refunding simply adds the GFD self-cost to the current magic meter.
 If this brings the current magic to above the max magic,
 in the next `Game.Logic()` tick the issue is fixed and the additional magic is erased.
 Hence,
 until the next tick happens,
-there will be a few frames where the current magic is higher than the max magic.)
+there will be a few frames where the current magic is higher than the max magic.
 
 Some possible exploit avenues were already blocked by Sisyphus condition.
 For example,
@@ -368,7 +366,7 @@ he can repeat this three times,
 granting him 18 building specials.
 Together with the two building specials obtained from naturally-spawned golden cookies,
 he gets all 20 building specials in his combo.
-[Sisyphus now has 2.907 quattuorquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-1.cki).
+[Sisyphus now has 2.907 quattuorquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-2.cki).
 
 
 Stopping Time
@@ -377,7 +375,7 @@ Stopping Time
 All of these cookies were achieved by overfeeding and popping wrinklers.
 Their reservoir effect essentially gives them a multiplier of `2^53`
 over what they would normally provide.
-Click Frenzies are nowhere near powerful enough to make clicking more powerful than wrinklers,
+Click Frenzies are nowhere near powerful enough to make clicking overcome wrinklers,
 even when accounting for the fact that wrinklers only take 1/30th of the CpS per tick.
 
 But now that Sisyphus has mastered abusing GFD,
@@ -411,7 +409,7 @@ once a buff has a duration longer than 462 seconds
 we can stretch it indefinitely.
 (This does mean that Sisyphus will have to wipe his save one last time
 to get an appropriate seed,
-as the one used for the previous save had GFD targetting FtHoF instead of Stretch Time.)
+as the one used for the previous save had GFD targeting FtHoF instead of Stretch Time.)
 
 Devastation has an initial duration of 10 seconds;
 stretching it 41 times raises its max time to 497.85 seconds,
@@ -446,7 +444,7 @@ good thing he honed his body lifting that massive boulder, right?
 Sisyphus laments that he _almost_ had a much less stressful way of achieving this goal.
 If he had been allowed to close his game in the beginning of his journey,
 he could achieve the result of stretching a Devastation buff using caramelized sugar lumps.
-Harvesting one of those clears lump cooldowns instantly,
+They mature even if the game is closed,
 but existing buffs only tick down while the game is open,
 so by getting lucky with the lump types
 and only playing a few instants per day
@@ -481,8 +479,8 @@ Sisyphus leaves wrinklers behind,
 and reaches [12.194 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki).
 
 
-The Final Trick: Buildings as Ineffective Reservoirs
-----------------------------------------------------
+The Final Trick: Buildings as Reservoirs
+----------------------------------------
 
 Sisyphus has employed pretty much every single multiplier he has access to;
 the only exception is the Chocolate egg,
@@ -494,7 +492,9 @@ even if just by a little.
 "I think I can squeeze a few more cookies past the IEEE754 floating-point limitations!"
 
 So far,
-Sisyphus has only purchased buildings.
+Sisyphus has only sold Wizard towers,
+and cursors for Godzamok;
+all other buildings were purchased without ever being sold.
 Whenever he hits a new cookie limit,
 he uses the cookies in bank to purchase buildings.
 He then reaches the limit again,
@@ -509,7 +509,7 @@ before having to grind back to 12.194 sexquadragintillion cookies.
 He then purchases another cursor,
 and so on,
 until he reaches the limit of 2322 cursors.
-(The 2323rd cursor would cost 12.688 sexquadragintillion cookies,
+(The 2323rd cursor would cost him 12.688 sexquadragintillion cookies,
 which is more than what Sisyphus can have in bank.)
 
 But selling all those cursors is worth 21.146 sexquadragintillion cookies.
@@ -557,8 +557,9 @@ This gives Sisyphus [109.692 novemquadragintillion cookies](https://github.com/s
 And finally,
 Sisyphus realizes that these higher building counts yields better building specials.
 He started out by having "You"s as the last building in the chain,
-but he can also have Chancemakers as the last building,
-and so on.
+but he can also have,
+say,
+Chancemakers as the last building of the chain.
 Every time he performs this buildings-as-reservoirs trick,
 he can grab a building special with the highest building and stretch it indefinitely.
 So by performing this trick 18 more times
@@ -569,7 +570,7 @@ Sisyphus is sure that changing the order at which he purchases buildings
 could net a few further cookies,
 but he has given up on meaningful increases to his limit.
 He sells all buildings and finally purchases the Chocolate egg:
-[231.662 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki)
+[231.662 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-5.cki)
 (`2.3166211683437614e+152`,
 a bit over `2^506`)
 is his final answer.
@@ -595,14 +596,12 @@ although not at the same time
 And he has achieved 590 achievements (which is 94% of the 622 available in the game).
 He got all the cookie-related achievements and all building-related achievements,
 plus many minigame and miscellaneous achievements.
-
 He is missing, of course,
 all achievements related to ascension numbers and ascending with certain amount of cookies baked.
-Some other achievements require heavenly upgrades to unlock,
+Some other achievements are from mechanics requiring heavenly upgrades,
 like "Here be dragon" (fully train Krumblor),
 "No time like the present" (receiving gifted cookies),
-"O fortuna" (own every fortune upgrade),
-and "Debt evasion" (ascending with an active loan).
+and "O fortuna" (own every fortune upgrade).
 And the last two achievements for owning a certain number of upgrades
 can only be achieved after he unlocks more upgrades.
 
@@ -618,7 +617,7 @@ is "Speed's the name of the game", the very last production achievement.
 It is awarded for baking 100 septendecillion cookies per second,
 and Sisyphus is limited to 30.524 septendecillion cookies per second.
 
-Sisyphus has asked Asopus to subit a pledge on his behalf to the Olympus gods
+Sisyphus has asked the river god Asopus to submit a pledge on his behalf to the Olympus gods
 to allow him to ascend in Cookie Clicker.
 The gods will be reviewing Sisyphus's pledge in a council meeting,
 to determine whether to allow Sisyphus to ascend,
