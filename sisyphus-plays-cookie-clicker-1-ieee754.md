@@ -135,7 +135,7 @@ The bit string representation of these numbers looks like
     we simply omit it from our representation.
     Alternatively,
     we can also write `a/b` in binary, like `1.d_1 d_2 d_3 ... d_52`,
-    and store the 52 bits `d_1 d_2 ... d_52` in the significant's place.
+    and store the 52 bits `d_1 d_2 ... d_52` in the significand's place.
     If you are a hardware designer,
     again each bit has a specific meaning (as a specific negative power of two),
     but the key takeaway for us is that
@@ -157,7 +157,7 @@ Each of these numbers correspond to one value of the significand `s`.
 - In the half-open interval `[2, 4)`
   the `2^52` numbers which are represented are spaced apart exactly by `2^(-51)`.
 - In the half-open interval `[4, 8)`
-  the `2^52` numbers which are represented are spaced apart exactly by `2^(-50)`.
+  the `2^52` numbers which are represented are spaced apart exactly by `2^(-50)`,
   and so on.
 - The same thing happens for negative exponents.
   For example,
