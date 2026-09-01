@@ -1,7 +1,7 @@
 Sisyphus Plays Cookie Clicker VI: Author's Notes
 ================================================
 
-This is the afterwword of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
+This is the afterword of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
 I will provide some context, justification, historical notes, and general thoughts
 concerning this series of articles.
@@ -33,7 +33,7 @@ that upgrade is subject to its limitations.
 
 There is the obvious limit of 1.8e308 for any number in JavaScript,
 but (as Sisyphus figured out very early in his journey)
-counters cannot go past `2^53`,
+simple counters cannot go past `2^53`,
 which means that the number of reindeer clicked will never count past this value.
 Hence our upgrade above caps off at `sqrt(2^53)*1000`,
 which is about 9.49e10.
@@ -46,14 +46,16 @@ For example,
 we could have a bonus multiplier that starts at 1,
 and each game tick it is divided by 2 and then increased by 1.
 This multiplier will slowly increase over time,
-but will never grow past 2.
+getting progressively closer to 2,
+but never surpassing it.
 [This kind of hardcap happens in the stock market minigame.](./stock-market-hard-cap.md).
 
 In my opinion,
 these categories of hardcap are much more interesting than the ones directly imposed by the code.
 These limits are not designed by the author,
 but rather _imposed on_ by the nature of the system in consideration.
-This series of articles essentially talks about the hardcap of Cookie Clicker,
+In a sense,
+this series of articles essentially talks about the hardcap of Cookie Clicker,
 including,
 of course,
 lengthy discussions about the behavior of the IEEE754 floating-point specification.
@@ -63,8 +65,9 @@ For example,
 if we remove the first condition in our hypothetical reindeer-based boost,
 so that the upgrade always boosts CpS by `sqrt(r) * 1000`,
 then there is no explicit softcap in the code anymore,
-but players will still experience a slowdown if they ever hit the 1 million reindeer mark.
-But the multiplier's growth will already be slowed down by that point,
+but players will still experience much slower growth at the 1 million reindeer mark
+compared to when they just started.
+But this multiplier's growth already started slowing down since the beginning,
 so one may claim that the softcap happens earlier.
 This notion is much more nuanced,
 and I avoided discussing it in my series of articles.
@@ -101,8 +104,8 @@ and a more detailed calculation of `2^922 = 3.545325e277`
 And finally,
 this series of articles,
 posted in 2026,
-reaches 1e280 cookies baked all time,
-or 2e285 if using the Birthday Cookie.
+reaches 3e280 cookies baked all time,
+or 1e284 if using the Birthday Cookie.
 
 
 Time Travel Troubles
@@ -111,10 +114,11 @@ Time Travel Troubles
 This series of articles stemmed from my work on [Cookie Connoisseur](https://github.com/staticvariablejames/cookie-connoisseur),
 a framework for testing Cookie Clicker mods.
 This framework uses [Playwright](https://playwright.dev/)
-to launch browsers playing Cookie Clicker in a scripted/automated manner,
+to launch browsers and play Cookie Clicker in a scripted/automated manner,
 thus creating repeatable test scenarios for mods.
 And a fundamental ability of Cookie Connoisseur
 is to mock (simulate) the date at which the script runs;
+for example,
 by default,
 all Cookie Connoisseur scripts run with the date set to September 13th, 2020.
 
@@ -137,7 +141,7 @@ but passing the timestamp calculated by the overwritten `Date.now`.
 This means that Cookie Connoisseur can travel to any timestamp
 representable by a IEEE754 floating-point number,
 going way past the year 275760.
-It can even accurately simulate the 1e250-years idling feared by Cronus
+It can even accurately simulate the centillion-years idling feared by Cronus
 [in the fourth article of the series](./sisyphus-plays-cookie-clicker-4-rules-change.md).
 
 However, there is a problem with that:
@@ -159,15 +163,17 @@ I felt that the standard wording to be a bit confusing,
 as it phrases this shorter range as if it were a consequence some earlier statement,
 but it feels to me that the intention is that a time value must be between -8.64e15 and 8.64e15.
 Since time values must not go over `8.64e15`,
+and `Date.now()` returns a time value,
 beyond the year 275760 the output of `Date.now()` must always be `NaN`,
 making Cookie Connoisseur's overwriting non-standards-compliant.
 
-Not being standards-compliant is mostly a [broken-window theory kind of problem](https://en.wikipedia.org/wiki/Broken_windows_theory).
+Not being fully standards-compliant is mostly a [broken-window theory kind of problem](https://en.wikipedia.org/wiki/Broken_windows_theory).
 If we are not being standards-compliant in this point,
 what is preventing us from being non-standards-compliant in other aspects?
-We could replace the 64-bit IEEE754 floating-point numbers with 128-bit IEEE floating-point numbers,
+We could replace the 64-bit IEEE754 floating-point numbers with 128-bit IEEE754 floating-point numbers,
 or with a number representation that increases in precision as time passes,
 and thus the entire concept of a hardcap goes out of the window.
+So I want to stay standards-compliant as much as possible.
 
 Of course,
 _Sisyphus Plays Cookie Clicker_ is a work of fiction,
@@ -196,7 +202,7 @@ I can pretend I did not read all that,
 it will be fine if I shove this detail under the rug.")
 Furthermore,
 essentially this is the behavior of Cookie Connoisseur,
-so I don't need to do any further work to get this behavior.
+so I don't need to do any further work here.
 
 I could,
 of course,
@@ -237,7 +243,7 @@ because now GFD is not asynchronous anymore.
 The closest thing in-game is what I adopted,
 by forbidding Sisyphus from changing the game state between cast and resolution.
 This also roughly corresponds to the "intended usage" described in the third article,
-and I did not want to simply ban GFD altogether.
+as I did not want to simply ban GFD altogether.
 
 There were other ways of preventing a limitless amount of on-screen golden cookies,
 like putting a cap on how many unresolved GFD casts Sisyphus could have at any given moment,
@@ -265,6 +271,12 @@ I computed how many cookies Sisyphus would have gotten were he able to keep the 
 Leftover Multipliers, Future Updates
 ------------------------------------
 
+Of course,
+this series of articles does not compute the hardcap of Cookie Clicker;
+not only I had to forbid some ways of playing the game,
+fundamentally these articles only present a very large number that can be achieved,
+and which I was unable to increase further.
+
 I believe I have accounted for every single multiplier that Sisyphus is able to get in Cookie Clicker.
 The only room for improvement I know exists
 is in the [buildings-as-reservoirs trick](./sisyphus-plays-cookie-clicker-3-gfd.md#the-final-trick-buildings-as-reservoirs).
@@ -286,12 +298,12 @@ though,
 so checking all of them is unfeasible
 and I did not bother trying to do something fancier like gradient descent.
 
+[The companion GitHub repository](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/)
+has the scripts that I used to produce the save files.
 Of course,
-I may have missed something;
-[the companion GitHub repository](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/)
-has the scripts that I used to produce the save files,
-so you can check it yourself
-and try to prove me wrong :)
+I may have missed something,
+or the scripts may be incorrect;
+feel free to check for yourself and prove me wrong :)
 
 Finally,
 having a script means that it can easily be run again
