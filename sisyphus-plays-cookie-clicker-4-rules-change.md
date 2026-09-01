@@ -3,7 +3,7 @@ Sisyphus Plays Cookie Clicker IV: The Olympus Council
 
 This is the fourth of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
-[In the previous article](./sisyphus-plays-cookie-clicker-1-ieee754.md),
+[In the previous article](./sisyphus-plays-cookie-clicker-3-gfd.md),
 Sisyphus hit the absolute limit on the number of cookies obtainable without ascending.
 In this article,
 rules will change.
@@ -30,13 +30,14 @@ He must stay as he is,
 without being allowed to ascend."
 
 "'Ascending' is just a term", Hera counterargued.
-"Is a mechanic of the game.
+"It's a mechanic of the game.
 Sisyphus will stay right where he is,
 clicking cookies in the Underworld."
 
-"No, no; no ascension of any kind!
+"What---no, no, no, we cannot allow that!
+One does not simply _ascends_ from the Underworld!
 He will get heavenly chips and heavenly upgrades,
-and there is nothing 'heavenly' about people serving sentences in the Underworld!"
+and there is nothing 'heavenly' about those serving sentences in the Underworld!"
 
 "These are just _terms_, Zeus.
 In the game code,
@@ -48,12 +49,12 @@ Are we really forbidding Sisyphus from _ascending in Cookie Clicker_ just becaus
 
 "No, it is, uh, well, ..."
 Zeus was still clearly salty about Sisyphus outsmarting him that one time.
-Apollo interrupted before he could whine any further.
 
-"The problem is the dragon", started Apollo.
+"The problem is the dragon,"
+interrupted Artemis before Zeus could whine any further.
 "When Sisyphus ascends in Cookie Clicker,
 he will be allowed to purchase Heavenly upgrades.
-Among them is How to bake your dragon,
+Among them is 'How to bake your dragon,'
 which gives Sisyphus access to the cookie dragon Krumblor.
 Among the auras Krumblor can have,
 the truly troublesome one is Dragon's Fortune.
@@ -72,15 +73,15 @@ and immediately reach Infinity."
 he will get Infinity cookies,
 and we will be forced to release him!"
 
+"Dragon's Fortune does not work with cookie storms, Zeus."
 Hades sighed and took the word back to himself.
-"Dragon's Fortune does not work with cookie storms, Zeus.
-It seems thus that the problem is not ascending per se,
+"It seems thus that the problem is not ascending per se,
 but the interaction between Dragon's Fortune and Gambler's Fever Dream.
 We could just ban one of those, for example."
 
-Apollo's opinion was that
-"we all know how badly coded is Gambler's Fever Dream.
-I say we ban that spell."
+"We all know how badly coded Gambler's Fever Dream is,"
+said Apollo.
+"I say we simply ban that spell."
 
 Athena disagreed.
 "I think we can engineer a more delicate restriction in this case.
@@ -97,15 +98,15 @@ will not affect him anyway due to the fact that he already cast 9 quadrillion sp
 or even just forbidding him from changing the parts of the game state relevant to the Grimoire,
 like casting other spells or selling Wizard towers."
 
-"Sounds good", said Hades.
+"Sounds good," said Hades.
 "This should cover all of our bases regarding the dragon."
 
 "Not quite, but we need to discuss something else first."
 Hermes started talking.
 "I went to talk with grandfather Cronus before this meeting.
 Grandpa has been much grumpier since the Renaissance.
-You see, people keep lumping him together with Chronos,
-and so now grandpa is also responsible for this whore _time_ thing.
+You see, people kept lumping him together with Chronos,
+and so now grandpa is also responsible for this whole _time_ thing.
 But that's great to me,
 because this means we can talk with someone that understands _time_
 with just a quick trip to the Tartarus!"
@@ -122,7 +123,7 @@ If he waits a decillion years,
 he will get a decillion years' worth of resources.
 You see,
 he can just idle for one centillion years,
-and easily get over `1.8 * 10^308` cookies this way."
+and easily get over `1.8e308` cookies this way."
 
 "Indeed,
 we most definitely don't want Sisyphus winning by doing nothing.
@@ -142,7 +143,7 @@ so demanding him to play once a week, for example, makes no sense."
 But the once-per-day rule sounds reasonable."
 
 Cronus actually thought that forbidding Sisyphus from closing the game would be simpler,
-but he convinced Hermes that this once-per-day rule would make things "more interesting".
+but he convinced Hermes that this once-per-day rule would make things "more interesting."
 So he didn't even mention this alternative in the council.
 
 "Hermes, you still had to say something about the dragon."
@@ -171,17 +172,19 @@ I think we are done?"
 "Hold on" interrupted Athena.
 "I think you must be made aware of Hermes's shenanigans with heralds."
 
-"You got me.
+"Aah, you got me.
 As a herald myself, I'm a fan of heralds,
 of course I would do something with heralds!
 You know,
 even Cookie Clicker has heralds.
 For every 100 people playing Cookie Clicker on Steam,
 the game adds one herald;
-and each herald gives +1% CpS multiplier.
+and each herald gives a +1% CpS multiplier.
 But since the year 2333,
 Valve has ceased to exist (the year had too many 3's in it),
-so the number of heralds in Cookie Clicker has been stuck at 0.01 since then."
+so the number of heralds in Cookie Clicker has been stuck at 0.01 since then.
+That's sad,
+I could not stand this."
 
 "Get to the point."
 
@@ -201,7 +204,7 @@ I therefore conclude this meeting."
 
 ---
 
-Hades summarized Sisyphus restrictions as follows.
+Hades thus summarized Sisyphus restrictions:
 
 1. After casting Gambler's Fever Dream,
    and before it resolves,
