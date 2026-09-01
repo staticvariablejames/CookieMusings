@@ -3,10 +3,11 @@ Sisyphus Plays Cookie Clicker V: Reach for the Heavens
 
 (This is the third of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
-In this article we reach the limit of cookies obtainable without ascending.)
+In this article we reach the limit of cookies
+obtainable under the rules imposed by the previous article.)
 
-After vigintillions of years,
-Sisyphus is finally allowed to ascend in Cookie Clicker.
+[In the previous article](./sisyphus-plays-cookie-clicker-4-rules-change.md),
+the gods have finally allowed Sisyphus to ascend in Cookie Clicker.
 This came at a hefty cost:
 the Olympus gods significantly curtailed the strenght of Gambler's Fever Dream,
 so Sisyphus will have to adopt new strategies.
@@ -16,10 +17,10 @@ Power gained, power lost
 ------------------------
 
 The heavenly upgrades are powerful.
-We get more cookie upgrades from upgrades like "Tin of british tea biscuits",
+We get more cookie upgrades from upgrades like "Tin of British Tea Biscuits",
 two tiers of synergy upgrades,
 fortune upgrades,
-various simple multipliers (like making clicking more powerful),
+various simple multipliers (like "Aura Gloves" making clicking more powerful),
 unshackling upgrades,
 and of course Krumblor.
 
@@ -42,8 +43,8 @@ Sisyphus can still get the combo with 15 building specials,
 but he again has to use that to overfeed wrinklers.
 And the buildings-as-reservoirs trick still works,
 albeit it is a bit weaker,
-as Sisyphus cannot use Wizard towers as one of the reservoirs
-(because he must frequently sell and purchase Wizard towers for the Grimoire).
+as Sisyphus cannot use Wizard Towers as one of the reservoirs
+(because he must frequently sell and purchase Wizard Towers for the Grimoire).
 
 There are strategies enabled by heavenly upgrades that Sisyphus can adopt,
 but for now,
@@ -54,8 +55,8 @@ The power of prestige
 ---------------------
 
 Whenever Sisyphus ascends,
-all of the cookies baked this ascension gets added to the "cookies sacrificed upon ascension" counter.
-The prestige level is just the cube root of this counter,
+all of the cookies baked this ascension gets added to the "cookies forfeited by ascending" statistic.
+The prestige level is just the cube root of this number,
 divided by 10000 and rounded down.
 For example,
 the 231.662 novemquadragintillion cookies obtained by Sisyphus prior to ascending
@@ -79,7 +80,6 @@ With Heavenly key,
 each prestige level grants Sisyphus +1% of CpS
 (proportionally less if only some of the upgrades are owned),
 meaning that Sisyphus immediately has access to a 614.164 tredecillion multiplier for his CpS.
-Interestingly,
 Heavenly chip secret alone is a 30.708 tredecillion multiplier;
 the other four upgrades combined are actually just a 20x multiplier on top of it.
 
@@ -87,12 +87,13 @@ the other four upgrades combined are actually just a 20x multiplier on top of it
 which requires Sisyphus to have one, two, and four "7"s in his prestige level to purchase,
 increase the prestige level effect on CpS by 1%;
 i.e. instead of granting +1% of CpS,
-they grant a +1.01% increase.
-This increase is very minimal,
-amounting to just over 3% CpS increase.)
+each prestige level grants +1.01% instead.
+Although these upgrades are multiplicative,
+the overall increase is very small,
+amounting to just over +3% CpS.)
 
 This very large multiplier means that Sisyphus gets past quinquagintillion cookies
-even without the complicated strategies abusing GFD glitches he needed before.
+even without the complicated strategies abusing GFD glitches that he needed before.
 And these extra cookies can of course be sacrificed,
 further increasing the prestige level.
 If Cookie Clicker operated at infinite precision,
@@ -104,13 +105,14 @@ Sisyphus thus expects to go past sexagintillions.
 But there is one extra trick here:
 the cookies baked this ascension counter
 (`Game.cookiesEarned` in the game code)
-gets added all at once to the "cookies sacrificed upon ascension" counter
+gets added all at once to the "cookies forfeited by ascending" counter
 (`Game.cookiesReset` in the game code).
 This means that `Game.cookiesReset` works as a reservoir,
 so by ascending `2^53` times,
 Sisyphus effectively gains a factor of `2^53` when sacrificing cookies.
-This essentially compounds into a `2^79.5` factor,
-which makes Sisyphus reach [272.309 novemsexagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-1.cki),
+This essentially compounds into a `2^79.5` factor for the number of cookies baked all time,
+whence a factor of `2^26.5` for the CpS,
+which makes Sisyphus reach [247.903 novemsexagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-1.cki),
 with a total of 3.032 quinseptuagintillion cookies baked all time.
 
 
@@ -139,7 +141,7 @@ Sisyphus has roughly `2^103` times his CpS in bank.
 Anything that costs less than `2^49` times his CpS
 can be obtained for free,
 as it "rounds to zero" when purchased.
-- This is the same trick that allowed Sisyphus to purchase goods for free
+- This is the same trick that allowed Sisyphus to purchase stock market goods for free
   [in the second article of this series](./sisyphus-plays-cookie-clicker-2-stock-market.md#sisyphus-the-quindecillionaire).
 
 But the main source of multipliers come from having more golden cookies.
@@ -148,23 +150,23 @@ But the main source of multipliers come from having more golden cookies.
 More Golden Cookies
 -------------------
 
-There are many heavenly upgrades
-that increase the frequency of golden cookies
+There are many heavenly upgrades that increase the frequency of golden cookies
 and the duration of their effects.
 
 The most important one is Distilled Essence of Redoubled Luck.
 This heavenly upgrade makes so that whenever a golden cookie spawns naturally,
 there's a 1% chance for the spawn to be doubled (i.e. two golden cookies spawn).
+(Also applies to reindeer.)
 The very end of Sisyphus's combo happens with three naturally spawned golden cookies,
 giving two Building Specials and one Elder Frenzy;
 if all three of these naturally spawned golden cookies generate a second golden cookie,
 Sisyphus can stack three more Building Specials to his combo.
 (This does mean that Sisyphus has to hit the 1% probability three times in a row,
-which lengthens the average time between successful combos by 1 million,
+which on its own lengthens the average time between successful combos by 1 million,
 but that's par for the course for Sisyphus at this point.)
 
 Other golden cookie upgrades are (individually) less impactful,
-but they are strong enough together.
+but they are still strong enough together.
 Lasting Fortune, Lucky Digit, Lucky Number, and Lucky Payout
 increase the duration of Building Specials from 61 seconds to 70 seconds,
 and Heavenly Luck and Startrade shortens the minimum golden cookie spawn time
@@ -203,9 +205,8 @@ which confers several benefits.
   the golden cookies clicked by Sisyphus have 5-10% chance of yielding the buff Dragon Harvest,
   which (because Sisyphus owns Dragon fang) gives a 17x multiplier to cookie production.
   This buff lasts twice as long as Building specials,
-  so Sisyphus can slot in this aura to get the buff
-  before getting the seven building specials from natural golden cookies,
-  and then slot another aura after the combo is assembled.
+  so Sisyphus can slot in this aura to get the buff,
+  and then slot another aura to get a CpS increase.
 
 - Earth Shatterer doubles how much cookies we gain back from selling buildings.
   Normally this aura is basically useless,
@@ -226,7 +227,8 @@ which confers several benefits.
   so Sisyphus is able to cast 14 `GFD->FtHoF` in a row now.
 
 - Dragon's Fortune multiplies CpS by 2.23 per on-screen golden cookie.
-  Any on-screen golden cookie should be clicked to (hopefully) obtain a building special,
+  Normally,
+  on-screen golden cookie should always be clicked to (hopefully) obtain a building special,
   which is a much higher multiplier;
   but the 14 FtHoF casts and the 7 building specials from natural golden cookies
   already saturate the limit of 20 building specials.
@@ -276,7 +278,7 @@ and the multipliers from Dragon's Fortune and Radiand Appetite;
 and these multipliers increase cookie production
 by more than the effect of the additional building.
 
-Sisyphus reaches [19.019 octogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-2.cki),
+Sisyphus reaches [29.721 octogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-2.cki),
 with 123.003 quinoctogintillion cookies baked all time,
 using all these multipliers.
 
@@ -311,7 +313,7 @@ and having the browser do the save game loading for Sisyphus.
 
 And what brings tears to Sisyphus eyes is the Birthday Cookie.
 We are long past the year 275760,
-the last year that the boost from the Birthday Cookie can be computed correctly.
+the last year in which the boost from the Birthday Cookie can be computed correctly.
 If Sisyphus closes and opens the game now,
 the game code returns `NaN` (Not-a-Number) for the CpS boost given by the Birthday Cookie.
 And `NaN` is violently destructive:
@@ -332,7 +334,7 @@ which are only available after ascending,
 the Birthday Cookie has been a loyal companion of Sisyphus
 basically since the beginning.
 
-Could Sisyphus have reached this stage before the year 275760?
+Could Sisyphus have reached this stage before the year 275760 and saved the Birthday Cookie?
 No, of course not.
 That is not nearly enough time to level up all buildings,
 or to max out Godzamok.
@@ -346,19 +348,19 @@ The resolve in Sisyphus's heart speaks louder, just barely.
 He ascends,
 and for the first time ever,
 the Birthday Cookie is not purchased.
-Instead,
-Sisyphus gently places his companion in the vault.
 
-With the last bit of his resolve,
-Sisyphus closes the game.
+Sisyphus gently places his companion in the vault,
+and,
+with the last bit of his resolve,
+he closes the game.
 The Birthday Cookie,
 the third most powerful upgrade in Sisyphus's arsenal,
 is permanently lost to the sands of time.
 
 The corpse of the upgrade,
 a "Click to purchase" button in the vault,
-will forever stare at Sisyphus soul,
-reminding him of his sacrifice.
+will forever stare at Sisyphus's soul,
+reminding him of this sacrifice.
 One must wonder if Sisyphus can ever be happy again.
 
 
@@ -378,11 +380,11 @@ Sisyphus still uses the Grimoire to cast `GFD->FtHoF`,
 but this time all 14 golden (and wrath) cookies from Force the Hand of Fate are left on-screen.
 With the two naturally-spawned golden cookies,
 Sisyphus can get 16 on-screen golden cookies for Dragon's Fortune;
-slotting Reality Bending is already more powerful than simply using Radiand Appetite.
+slotting Reality Bending is already more powerful than simply using Radiant Appetite.
 
 "Sacrificing the Birthday Cookie was worth it. I think. I hope."
-Sisyphus reaches [143.957 sexoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-3.cki),
-with 1.135 duononagintillion cookies baked all time.
+Sisyphus reaches [1.106 sexoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-3.cki),
+with 8.863 unnonagintillion cookies baked all time.
 
 
 Distilling luck to get more golden cookies
@@ -404,7 +406,7 @@ But he can go further.
 DEoRL works as follows.
 Every game tick (which happens 30 times per second)
 the game has a chance of spawning a golden cookie.
-(In the code, this is responsibility of the function `Game.updateShimmers()`.)
+(In the code, this is the responsibility of the function `Game.updateShimmers()`.)
 This chance increases with time,
 being 0 below the minimum GC spawn time
 and growing all the way to 1 (100%) when it reaches the maximum GC spawn time.
@@ -436,7 +438,8 @@ The garden plant Green Rot could also be used;
 a garden full of nursetulips and greenrots multiplies that by about 32%,
 reaching 74.26 seconds.
 (If the "ghost nursetulip" glitch is used,
-these numbers become 33.6% and 75.2 seconds, respectively.)
+we can replace mature nursetulips with bud green rots
+to get these numbers to 33.6% and 75.2 seconds, respectively.)
 Each on-screen golden cookie multiplies their lifetime by 0.95,
 but as long as the spawn cycle is longer than 3.76 seconds,
 the bottleneck will be the lifetime of the very first golden cookie.
@@ -542,17 +545,17 @@ Together with the 14 golden cookies spawned by the Grimoire,
 they only get Sisyphus to 19 on-screens.
 Resorting once more to the buildings-as-reservoirs trick
 (including the variant to maximize the power of building specials),
-Sisyphus reaches [2.697 septenoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-4.cki)
-(`2.696948439811237e264`, about `2^878`),
-with 18.152 duononagintillion cookies baked all time
-(`1.8152061871066688e+280`, which is `2^931`).
+Sisyphus reaches [6.363 septenoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-4.cki)
+(`6.362969735501599e264`, about `2^879.7`),
+with 36.304 duononagintillion cookies baked all time
+(`3.6304123742133376e+280`, which is `2^932`).
 
 Had Sisyphus been able to add the Birthday Cookie to his army of upgrades,
 he would have gotten 5 orders of mangitude further,
-reaching [389.215 octooctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-5.cki)
-(`3.892145559479374e269`, about `2^895`),
+reaching [24.257 octooctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-5.cki)
+(`2.425674029486538e+268`, about `2^891.6`),
 with 2.379 quattuornonagintillion cookies baked all time
-(`2.379227053564453e285`, which is `2^948`).
+(`2.379227053564453e285`, which is `2^944`).
 
 
 Sisyphus buckles; the boulder falls
@@ -560,7 +563,7 @@ Sisyphus buckles; the boulder falls
 
 At long last,
 Sisyphus meets his ultimate fate.
-It took him vigintillions of years to reach septoctogintillion cookies;
+It took him vigintillions of years to reach septenoctogintillion cookies;
 and this is a milestone he cannot surpass.
 
 Sisyphus can try as much as he want.
@@ -570,7 +573,7 @@ making progressively more cookies,
 but as he reaches septoctogintillion cookies yet again,
 his multipliers fail him;
 his buffs go past diminishing returns and fully stagnate;
-the "cookies baked all time" is fully saturated,
+the "cookies baked all time" counter is fully saturated,
 whence his prestige level is unchanging.
 
 Sisyphus ascends.
