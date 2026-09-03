@@ -69,7 +69,8 @@ If we ignore the constants
 (which do not affect the growth rate),
 this gives us the differential equation `f'(t) = cbrt(f(t))`.
 This equation can be solved using separation of variables,
-or you can simply guess that it probably has a polynomial solution `f(t) = t^a` and calculate what `a` must be.
+or you can simply guess that it probably has a solution of the form `f(t) = a * t^b`
+and calculate what `a` and `b` must be.
 Either way,
 all solutions have the form `f(t) = (t + C)^{3/2} * (2/3)^{3/2}` for some arbitrary constant C.
 
@@ -111,8 +112,8 @@ let us compare the behavior of `g` between `s` and `2s`
 with the behavior of `f` between `s/2` and `s`.
 By our hypothesis,
 the value of `g(s)` is at least `f(s/2)`.
-The derivative of `f` between `s/2` and `s` increases by a factor of `sqrt(2)`,
-so even though the derivative of `g(t)` between `s` and `2s` is stuck at `f'(s/2)`,
+The derivative of `f` between `s/2` and `s` increases by a factor of `sqrt(2)`.
+Even though the derivative of `g(t)` between `s` and `2s` is stuck at `f'(s/2)`,
 the interval between `s` and `2s` is twice as long as the interval between `s/2` and `s`,
 so how much `g` increases between `s` and `2s`
 is more than how much `f` increases between `s/2` and `s`.
@@ -259,7 +260,7 @@ Building prices scale exponentially, gaining a factor of 1.15 each time;
 this means that in `log_1.15(20) =~ 21.43` purchases
 the price increases by more than a factor of 20.
 That is,
-your strategy purchases only 22 more "You"s than evenly splitting resources.
+your strategy purchases at most 22 more "You"s than evenly splitting resources.
 When we have 100 "You"s,
 that's a 22% CpS increase,
 but the more "You"s we have,
