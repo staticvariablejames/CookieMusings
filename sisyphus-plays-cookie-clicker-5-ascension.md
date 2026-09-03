@@ -1,7 +1,7 @@
 Sisyphus Plays Cookie Clicker V: Reach for the Heavens
 ======================================================
 
-(This is the third of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
+(This is the fifth of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
 In this article we reach the limit of cookies
 obtainable under the rules imposed by the previous article.)
@@ -9,7 +9,7 @@ obtainable under the rules imposed by the previous article.)
 [In the previous article](./sisyphus-plays-cookie-clicker-4-rules-change.md),
 the gods have finally allowed Sisyphus to ascend in Cookie Clicker.
 This came at a hefty cost:
-the Olympus gods significantly curtailed the strenght of Gambler's Fever Dream,
+the Olympus gods significantly curtailed the strength of Gambler's Fever Dream,
 so Sisyphus will have to adopt new strategies.
 
 
