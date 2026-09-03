@@ -112,7 +112,7 @@ so by ascending `2^53` times,
 Sisyphus effectively gains a factor of `2^53` when sacrificing cookies.
 This essentially compounds into a `2^79.5` factor for the number of cookies baked all time,
 whence a factor of `2^26.5` for the CpS,
-which makes Sisyphus reach [247.903 novemsexagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-1.cki),
+which makes Sisyphus reach [1.559 unseptuagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-1.cki),
 with a total of 3.032 quinseptuagintillion cookies baked all time.
 
 
@@ -278,7 +278,7 @@ and the multipliers from Dragon's Fortune and Radiand Appetite;
 and these multipliers increase cookie production
 by more than the effect of the additional building.
 
-Sisyphus reaches [29.721 octogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-2.cki),
+Sisyphus reaches [31.853 unoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-2.cki),
 with 123.003 quinoctogintillion cookies baked all time,
 using all these multipliers.
 
@@ -383,7 +383,7 @@ Sisyphus can get 16 on-screen golden cookies for Dragon's Fortune;
 slotting Reality Bending is already more powerful than simply using Radiant Appetite.
 
 "Sacrificing the Birthday Cookie was worth it. I think. I hope."
-Sisyphus reaches [1.106 sexoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-3.cki),
+Sisyphus reaches [80.019 septenoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-3.cki),
 with 8.863 unnonagintillion cookies baked all time.
 
 
@@ -446,27 +446,36 @@ the bottleneck will be the lifetime of the very first golden cookie.
 
 The minimum spawn time for golden cookies starts out at 5 minutes.
 Just with upgrades
-(Lucky day, Serendipity, Golden goose egg, Heavenly luck, Green yeast digestives,
-and Startrade if the season is April fools)
-this number goes down to 63.66 seconds.
+(Lucky day, Serendipity, Golden goose egg, Heavenly luck, and Green yeast digestives),
+this number goes down to 67 seconds.
 A garden full of nursetulips and golden clovers divides this number by 2.92,
-bringing this number down to 21.8 seconds.
+bringing this number down to 22.94 seconds.
 Finally,
 Sugar Blessing (from golden lumps) reduces this by 10%,
-Krumblor's Arcane Aura multiplies this by 0.95, or 0.945 if accompanied by Reality Bending,
-and worshipping Selebrak on the diamond slot multiplies it by 0.97,
-or 0.955 during April fools.
-The fastest GC spawning time is thus 17.73 seconds.
+and Krumblor's Arcane Aura multiplies this by 0.95, or 0.945 if accompanied by Reality Bending.
+The fastest GC spawning time is thus 19.53 seconds.
 (Using the "gost nursetulip" glitch,
-the factor becomes 3.02 instead of 2.92,
-slightly shortening this to 17.13 seconds.)
+the factor from the garden becomes 3.02 instead of 2.92,
+slightly shortening this to 18.9 seconds.)
 With a lifetime of 56.26 seconds,
-Sisyphus can squeeze 3 additional spawn cycles before the first golden cookie despawns,
-**totaling 5 on-screen golden cookies**.
-(The first golden cookie actually has a lifespan of 56.45 seconds,
-because it only spawned after the spawnlead had already been spawned;
-since 53.45/17.73 is approximately 3.014,
-Sisyphus's timing is incredibly tight for all of this to work.)
+Sisyphus can squeeze 2 additional spawn cycles before the first golden cookie despawns,
+**totaling 4 on-screen golden cookies**.
+- The first golden cookie actually has a lifespan of 56.45 seconds,
+  because it only spawned after the spawnlead had already been spawned.
+- Some seasons have heavenly upgrades that also decrease golden cookie spawn times;
+  the strongest one is Startrade,
+  which multiplies them by 0.95 during April fools.
+  Selebrak further reduces spawn times as well,
+  but again only during seasons.
+  This would reduce the minimum GC spawning time to 17.73 seconds,
+  which would allow Sisyphus to get 5 on-screen golden cookies.
+  The problem is that the code for naturally-occuring seasons has long stopped working,
+  so the only way of entering a season is through the Season Switcher biscuits.
+  But each time that the season sitcher is used,
+  its price increases by 50% (multiplicatively),
+  so after a few thousand season switches it is impossible for Sisyphus to further change seasons.
+  (Sisyphus could sell all his buildings and not purchase the upgrade "egg",
+  but that's not compatible with the buildings-as-reservoirs trick.)
 
 Sisyphus has investigated a potential avenue for shortening golden cookie spawn times further:
 cookie chains.
@@ -514,9 +523,9 @@ for a total of 26 on-screen golden cookies
 23 non-spawnlead GCs from the cycle repetitions,
 plus 2 GCs from the last cycle).
 With Dragon's Fortune and Reality Bending,
-these additional 21 GCs (compared to not abusing cookie chains)
-would give Sisyphus a multiplier of `2.353^21`,
-which is about `6.37e7`.
+these additional 22 GCs (compared to not abusing cookie chains)
+would give Sisyphus a multiplier of `2.353^22`,
+which is about `1.5e8`.
 
 Unfortunately,
 this "cookie chain storm abuse" has a fatal flaw:
@@ -540,22 +549,22 @@ simply by executing the same combo over and over again.
 (This is the same reason why Sisyphus cannot make use of
 the golden cookie spawned by the Fortune Cookies upgrade.)
 
-Hence Sisyphus can only get an additional 5 on-screen golden cookies.
+Hence Sisyphus can only get an additional 4 on-screen golden cookies.
 Together with the 14 golden cookies spawned by the Grimoire,
-they only get Sisyphus to 19 on-screens.
+they only get Sisyphus to 18 on-screens.
 Resorting once more to the buildings-as-reservoirs trick
 (including the variant to maximize the power of building specials),
-Sisyphus reaches [6.363 septenoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-4.cki)
-(`6.362969735501599e264`, about `2^879.7`),
-with 36.304 duononagintillion cookies baked all time
-(`3.6304123742133376e+280`, which is `2^932`).
+Sisyphus reaches [1.309 octooctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-4.cki)
+(`1.3089779436036037e267`, about `2^887.34`),
+with 18.588 trenonagintillion cookies baked all time
+(`1.858771135597229e283`, which is `2^941`).
 
 Had Sisyphus been able to add the Birthday Cookie to his army of upgrades,
 he would have gotten 5 orders of mangitude further,
-reaching [24.257 octooctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-5.cki)
-(`2.425674029486538e+268`, about `2^891.6`),
-with 2.379 quattuornonagintillion cookies baked all time
-(`2.379227053564453e285`, which is `2^944`).
+reaching [664.553 novemoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-5.cki)
+(`6.645525395128818e272`, about `2^906.3`),
+with 9.745 quinnonagintillion cookies baked all time
+(`9.7453140114e288`, which is `2^960`).
 
 
 Sisyphus buckles; the boulder falls
@@ -584,3 +593,23 @@ The gods have won;
 Sisyphus has merely replaced the boulder with a cookie.
 
 One must wonder if Sisyphus is truly happy.
+
+
+The Companion GitHub Repository
+===============================
+
+One last time,
+the companion repository has 5 save files.
+- [Save 1: 1.559 unseptuagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-1.cki),
+  just by using prestige levels.
+- [Save 2: 31.853 unoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-2.cki),
+  by stacking multipliers from the Shimmering Veil, Golden Switch, Sugar Frenzy,
+  and using Distilled Essence of Redoubled Luck and Krumblor to get more golden cookies.
+- [Save 3: 80.019 septenoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-3.cki),
+  after letting go of the Birthday Cookie and using Stretch Time to go back to using Godzamok.
+- [Save 4: 1.309 octooctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-4.cki),
+  by using Distilled Essence of Redoubled Luck to get 3 extra on-screen golden cookies,
+  and squeezing a bit more strength from Building Specials
+  by doing the variant of the buildings-as-reservoirs trick.
+- [Save 5: 664.553 novemoctogintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus5-5.cki),
+  which is what Sisyphus would get if he could also use the Birthday Cookie.
