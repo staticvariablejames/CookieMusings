@@ -18,3 +18,11 @@ Series of articles investigating the limits of Cookie Clicker.
 - [Sisyphus Plays Cookie Clicker IV: The Olympus Council](./sisyphus-plays-cookie-clicker-4-rules-change.md)
 - [Sisyphus Plays Cookie Clicker V: Ascending to the Heavens](./sisyphus-plays-cookie-clicker-5-ascension.md)
 - [Sisyphus Plays Cookie Clicker VI: Author's Notes](./sisyphus-plays-cookie-clicker-6-authors-notes.md)
+
+Mod Development
+---------------
+
+Articles focusing on the development of mods,
+including programming advice and design discussions.
+
+- [David Bau's `seedrandom`](./david-bau-seedrandom.md)
