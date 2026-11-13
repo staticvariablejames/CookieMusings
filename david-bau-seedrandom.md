@@ -7,7 +7,7 @@ It assumes familiarity with RNGs;
 in the manual for my mod Choose Your Own Lump.)
 
 Cookie Clicker has several instances of seeded RNG,
-but JavaScript notoriously does not have means of seeding `Math.random()`.
+but JavaScript notoriously does not have a native method for seeding `Math.random()`.
 Cookie Clicker thus has to use a third-party library for that,
 and the one chosen by Orteil is David Bau's `seedrandom`.
 His random number generator is based on the RC4 engine;
@@ -31,7 +31,8 @@ Advice Summary
 Write your code like this if you want to use repeatable RNG.
 ```javascript
     let currentRNG = Math.random;
-    Math.seedrandom(Game.seed + "some string unique to this function"); // This replaces Math.random
+    Math.seedrandom(Game.seed + "some string unique to this function");
+    // The line above overwrites Math.random with a brand new function. We can then take it out:
     let myRNG = Math.random;
     Math.random = currentRNG;
     // Now call myRNG() to generate random numbers between 0 and 1
@@ -51,20 +52,20 @@ There are two ways of using this function:
     it constructs a seed for an RNG engine based on the given argument,
     so you may think of the given argument as the seed itself.
 - `Math.seedrandom()`.
-  This also replaces the current `Math.random` object,
+  This also replaces the current `Math.random` function,
   but it uses a pool of entropy maintained internally by `seedrandom` to generate a seed.
   Effectively,
-  this uses a random, unpredictable seed.
-  - There is technically a third way of calling this function:
-    `Math.seedrandom("some string", true)`.
-    In this case it will use both the given string and the internal entropy pool to generate the seed.
-    You will never use this in your code.
-    (I'm not even sure what is the use case for this function;
-    perhaps it is to give yet another source of entropy for a `Math.seedrandom()` style call,
-    in case you're trying to do cryptography with this library?)
+  this uses a random, unpredictable seed to construct the RNG.
+- There is technically a third way of calling this function:
+  `Math.seedrandom("some string", true)`.
+  In this case it will use both the given string and the internal entropy pool to generate the seed.
+  You will never use this in your code.
+  (I'm not even sure what is the use case for this function;
+  perhaps it is to give yet another source of entropy for a `Math.seedrandom()` style call,
+  in case you're trying to do cryptography with this library?)
 
 The first call makes `Math.random()` to behave predictably
-and the second call makes it behave unpredictably,
+and the second call makes it behave unpredictably again,
 so we can use the first call to set up a portion of the code to use seeded RNG,
 and then use the second call to "undo" this and resume the unpredictable generation of random numbers.
 Orteil's code has plenty of examples of this type of usage.
@@ -82,7 +83,7 @@ For example,
     }
 ```
 
-Because calling `Math.seedrandom` ovewrites `Math.random` with a brand new RNG,
+Because calling `Math.seedrandom` ovewrites `Math.random` with a brand new closure,
 we could instead store the old RNG and restore it afterwards.
 Something like
 ```javascript
@@ -105,8 +106,7 @@ Abusing this bug is known as CMUM ("Clone Missing Unseed Manipulation").
 
 But you can avoid this problem by restoring `Math.random` immediately.
 Specifically,
-`Math.seedrandom` replaces `Math.random` with a "self-contained function"
-(i.e. it makes no reference to any global variable),
+`Math.seedrandom` replaces `Math.random` with a closure that makes no reference to any global variable,
 so we can simply pick that function and use it directly.
 Something like
 ```javascript
@@ -130,7 +130,7 @@ but it works.)
 
 
 Caveat
-======
+------
 
 This trick creates a local random number generator without affecting the global `Math.random`.
 If your code relies on some other code that calls `Math.random()`,
