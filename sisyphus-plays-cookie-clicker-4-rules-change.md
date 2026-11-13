@@ -22,7 +22,8 @@ I,
 Hades,
 am presiding the council today,
 and this meeting's goal is to decide whether to allow Sisyphus to ascend,
-and if so under which conditions."
+and if so,
+under which conditions."
 
 "We cannot allow that", complained Zeus.
 "One cannot simply _ascend_ from the Underworld.
@@ -54,7 +55,7 @@ Zeus was still clearly salty about Sisyphus outsmarting him that one time.
 interrupted Artemis before Zeus could whine any further.
 "When Sisyphus ascends in Cookie Clicker,
 he will be allowed to purchase Heavenly upgrades.
-Among them is 'How to bake your dragon,'
+Among them is 'How to bake your dragon',
 which gives Sisyphus access to the cookie dragon Krumblor.
 Among the auras Krumblor can have,
 the truly troublesome one is Dragon's Fortune.
@@ -114,7 +115,7 @@ with just a quick trip to the Tartarus!"
 "Please get to the point, Hermes."
 
 "You know how there's some heavenly upgrades that generates cookies even offline?
-Well,
+You see,
 these upgrades are very weak,
 but they are not _capped_.
 If Sisyphus waits for a year,
@@ -163,7 +164,7 @@ which will allow him to get those upgrades once again."
 "Not quite!" answered Hermes.
 "There are only four of those upgrades.
 Sisyphus can stuff them into the permanent upgrade slots,
-and still have one to spare!"
+and still have one slot to spare!"
 
 "Fair enough" said Hades.
 "OK, we have adressed the dragon and the idling.
@@ -173,7 +174,8 @@ I think we are done?"
 "I think you must be made aware of Hermes's shenanigans with heralds."
 
 "Aah, you got me.
-As a herald myself, I'm a fan of heralds,
+You see,
+as a herald myself, I'm a fan of heralds,
 of course I would do something with heralds!
 You know,
 even Cookie Clicker has heralds.
@@ -220,4 +222,4 @@ Hades thus summarized Sisyphus restrictions:
 
 Under these restrictions,
 Sisyphus is now allowed to ascend in Cookie Clicker.
-This event will take place in the next article.
+This event will take place [in the next article](./sisyphus-plays-cookie-clicker-5-ascension.md).

@@ -36,7 +36,7 @@ but (as Sisyphus figured out very early in his journey)
 simple counters cannot go past `2^53`,
 which means that the number of reindeer clicked will never count past this value.
 Hence our upgrade above caps off at `sqrt(2^53)*1000`,
-which is about 9.49e10.
+which is about `9.49e10`.
 And because this limit is theoretically reachable
 (by clicking `2^53` reindeer in a single ascension)
 this is the hardcap of this upgrade.
@@ -48,12 +48,13 @@ and each game tick it is divided by 2 and then increased by 1.
 This multiplier will slowly increase over time,
 getting progressively closer to 2,
 but never surpassing it.
-[This kind of hardcap happens in the stock market minigame.](./stock-market-hard-cap.md).
+[This kind of hardcap happens in the stock market minigame](./stock-market-hard-cap.md),
+for example.
 
 In my opinion,
 these categories of hardcap are much more interesting than the ones directly imposed by the code.
 These limits are not designed by the author,
-but rather _imposed on_ by the nature of the system in consideration.
+but rather imposed on _by the nature of the system_ in consideration.
 In a sense,
 this series of articles essentially talks about the hardcap of Cookie Clicker,
 including,
@@ -104,8 +105,8 @@ and a more detailed calculation of `2^922 = 3.545325e277`
 And finally,
 this series of articles,
 posted in 2026,
-reaches 3e280 cookies baked all time,
-or 1e284 if using the Birthday Cookie.
+reaches `2^941 = 1.9e283` cookies baked all time,
+or `2^960 = 9.7e288` if using the Birthday Cookie.
 
 
 Time Travel Troubles
@@ -150,9 +151,10 @@ _it makes Cookie Connoisseur not standards-compliant_.
 they are integers representing the number of milliseconds that have passed
 since the midnight in the beginning of January 1st, 1970.
 IEEE754 floating-point numbers can represent all integers between -2^53 and 2^53
-(about -9.007e15 to 9.007e15),
-and beyond that range all representable numbers are integers;
-but the ECMAScript standard restricts time values
+(about `-9.007e15` to `9.007e15`);
+beyond that range,
+there are integers which cannot be represented.
+The ECMAScript standard restricts time values
 to be between -8.64e15 and 8.64e15,
 which is slightly shorter than the interval where all integers can be represented.
 (8.64e15 milliseconds is 100 million days,
@@ -177,7 +179,9 @@ So I want to stay standards-compliant as much as possible.
 
 Of course,
 _Sisyphus Plays Cookie Clicker_ is a work of fiction,
-so I can change some rules compared to reality.
+so,
+compared to reality,
+I can change some rules.
 For example,
 computers can definitely last decades without turning off,
 but there is no way a computer fabricated today
@@ -189,10 +193,11 @@ I wanted to keep Cookie Clicker as-is,
 just with infinite time.
 
 Hence I had to "patch" the ECMAScript standard
-to allow `Date.now()` to keep working beyond the year 275760.
+to allow `Date.now()` to keep working beyond the year 275760
+in the fictional universe of this series of articles.
 But if `Date` objects are allowed to go past this limit,
 the Birthday Cookie will continue to increase forever,
-making it very easy for Sisyphus to reach Infinity cookies.
+making it very easy for Sisyphus to reach `Infinity` cookies.
 This obviously makes for a very uninteresting series of articles;
 so I have choosen to just allow `Date.now()` to work past the limit,
 and keep `Date` objects fully standards-compliant.
@@ -276,23 +281,27 @@ this series of articles does not compute the hardcap of Cookie Clicker;
 not only I had to forbid some ways of playing the game,
 fundamentally these articles only present a very large number that can be achieved,
 and which I was unable to increase further.
+This number is a compelling candidate for the hardcap,
+but "I cannot do better" is obviously not a proof.
 
 I believe I have accounted for every single multiplier that Sisyphus is able to get in Cookie Clicker.
 The only room for improvement I know exists
 is in the [buildings-as-reservoirs trick](./sisyphus-plays-cookie-clicker-3-gfd.md#the-final-trick-buildings-as-reservoirs).
 Say that we are now selling Grandmas to purchase Farms.
 Each new farm costs 15% more than the previous one,
-so it could be that we have 10% more cookies than the previous farm
+so it could be that we can only afford 10% more cookies than the previous farm,
 and those additional cookies are "wasted".
 But it could be that Mines are only 8% more expensive than the previous farm,
 so it is worthwhile to go from Grandmas to Mines instead,
 and come back to farms later.
 This increases the cookies available in the reservoir by up to 15%;
 with 20 buildings,
-thats a factor of `1.15^19 =~ 14.23`
-(or `1.15^17 =~ 10.76` if we account for Sisyphus not using Wizard towers or "You"s in the trick).
+thats a factor of up to `1.15^20 =~ 16.37`
+(or `1.15^18 =~ 12.38` if we account for Sisyphus not using Wizard towers or "You"s in the trick).
+After accounting for the ["to the power of 3/2"](./t-sqrt-t-growth.md) heuristic,
+these numbers are `66.21` and `43.54`, respectively.
 So if the order I have chosen is the worst possible one,
-we could a priori make Sisyphus bake an order of magnitude more cookies.
+we could a priori make Sisyphus bake nearly two orders of magnitude more cookies.
 There are `20! = 2.43e17` building orders,
 though,
 so checking all of them is unfeasible

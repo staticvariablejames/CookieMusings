@@ -19,7 +19,7 @@ purchasing the Chocolate egg afterwards.)
 
 GFD is arguably the worst-coded portion of Cookie Clicker,
 housing many bugs and exploits;
-and the patches are not always successful.
+and the patch attempts were not always successful.
 Let us however start simple,
 and cast the spell as it is intended to be cast.
 
@@ -39,7 +39,7 @@ If we started with a full magic meter,
 we will be left with 23 magic.
 We can then sell Wizard towers until the max magic becomes 23;
 this lowers the cost of FtHoF to `floor(10 + 0.6*23) = 23`,
-meaning we have just enough magic to cast FtHoF a second time in succession.
+meaning we have just enough magic to cast FtHoF a second time in quick succession.
 (Starting with 81 max magic is, in fact,
 the absolute minimum max magic we need in order to cast FtHoF twice in succession this way.)
 
@@ -152,8 +152,7 @@ Thankfully for Sisyphus,
 there are seeds where GFD picks FtHoF for all 13 casts.
 (The companion repository
 [has a seed-searching script](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/src/seed-search.ts).
-In this case,
-the lexicographically least seed satisfying this property is `aaadj`.)
+The lexicographically least seed satisfying this property is `aaadj`.)
 Sisyphus merrily continues his journey,
 unaware of this bit of luck he had.
 
@@ -218,7 +217,7 @@ Cookie Clicker will still try to cast the target spell anyway,
 using the cost calculated during the cast step.
 So if the "donor save" (where GFD is cast) has very cheap spells due to a low max magic,
 and the "receiving save" (where GFD resolves) has a large pool of magic,
-the receiving save will be able to cast the target spell multiple times more than it should have,
+the receiving save will be able to cast the target spell more times than it should have,
 not only due to paying a cheaper cost to cast the spell,
 but also for not having to pay the GFD's "self cost".
 Sisyphus is not able to abuse this bug because,
@@ -382,9 +381,10 @@ But now that Sisyphus has mastered abusing GFD,
 he can overcome wrinklers with an artificial reservoir of sorts,
 by harnessing the power of Godzamok.
 
-When Godzamok is worshipped, say, in the diamond slot,
-selling buildings grants the buff "Devastation" for 10 seconds.
-Each building sold increases the clicking power by 1%.
+When Godzamok is worshipped,
+selling buildings grants the buff "Devastation" for 10 seconds,
+and in the diamond slot,
+each building sold increases the clicking power by 1%.
 Multiple buildings can be sold to increase the power of Godzamok's buff,
 but they will not increase the length of the buff.
 Devastation is still just a regular buff, though,
@@ -487,13 +487,13 @@ the only exception is the Chocolate egg,
 which he will use as the absolute last resort... which will happen in a few paragraphs.
 He starts selling his buildings to extract the maximum out of the Chocolate egg,
 but as he does so,
-he notices that he is actually surpassing his previous limit of 3 sexquadragintillion cookies,
+he notices that he is actually surpassing his previous limit of 12 sexquadragintillion cookies,
 even if just by a little.
 "I think I can squeeze a few more cookies past the IEEE754 floating-point limitations!"
 
 So far,
-Sisyphus has only sold Wizard towers,
-and cursors for Godzamok;
+Sisyphus has only sold Wizard towers (to adjust max magic)
+and cursors (for Godzamok);
 all other buildings were purchased without ever being sold.
 Whenever he hits a new cookie limit,
 he uses the cookies in bank to purchase buildings.
@@ -521,7 +521,7 @@ The cursors had behaved like a cookie reservoir,
 even if much less powerful than the other reservoirs that Sisyphus has dealt with.
 
 This brings Sisyphus to 36.512 sexquadragintillion cookies.
-Of course he cannot use those cookies to purchase more cursors,
+Of course it would be unproductive to use those cookies to purchase more cursors,
 as he has just sold all of them to reach this number.
 But Sisyphus can purchase more grandmas.
 The 2310th grandma costs 13.747 sexquadragintillion cookies
@@ -552,7 +552,7 @@ Sisyphus can fill his garden with cheapcaps,
 cast Crafty Pixies,
 and worship Dotjeiess,
 to get another building here and there.
-This gives Sisyphus [109.692 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki).
+This gives Sisyphus [3.243 quinquagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki).
 
 And finally,
 Sisyphus realizes that these higher building counts yields better building specials.
@@ -570,9 +570,9 @@ Sisyphus is sure that changing the order at which he purchases buildings
 could net a few further cookies,
 but he has given up on meaningful increases to his limit.
 He sells all buildings and finally purchases the Chocolate egg:
-[231.662 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-5.cki)
-(`2.3166211683437614e+152`,
-a bit over `2^506`)
+[6.849 quinquagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-5.cki)
+(`6.848721205334138e+153`,
+a bit over `2^511`)
 is his final answer.
 He cannot get any more cookies without ascending.
 
@@ -623,7 +623,7 @@ The gods will be reviewing Sisyphus's pledge in a council meeting,
 to determine whether to allow Sisyphus to ascend,
 and if so,
 under which restrictions.
-But the meeting will happen in the next article.
+But the meeting will happen [in the next article](./sisyphus-plays-cookie-clicker-4-rules-change.md).
 
 
 The Companion GitHub Repository
@@ -637,7 +637,8 @@ the companion repository again has 5 save files.
   from abusing GFD's refund mechanic to get all 20 building specials.
 - [Save 3: 12.194 sexquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-3.cki),
   by using Stretch Time and a maxed-out Godzamok.
-- [Save 4: 109.692 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki),
+- [Save 4: 3.243 quinquagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-4.cki),
   by doing the buildings-as-reservoirs trick.
-- [Save 5: 231.662 novemquadragintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-5.cki),
+  This and the next save files were made _before_ selling all the buildings.
+- [Save 5: 6.849 quinquagintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus3-5.cki),
   by maxing out building specials and purchasing the Chocolate egg.

@@ -4,7 +4,7 @@ Sisyphus Plays Cookie Clicker I: Face to Face with IEEE754
 (This is the first of a [series of articles](./README.md#sisyphus-plays-cookie-clicker)
 investigating the limits of Cookie Clicker.
 This first article is mostly technical;
-we need to discuss how IEEE754 works and how it limits many counters in the game.)
+we need to discuss how the precision limits of IEEE754 works and how it affects the numbers in the game.)
 
 [Sisyphus](https://en.wikipedia.org/wiki/Sisyphus) is a character in Greek mythology
 who attracted the wrath of the Greek gods by deceitfully outsmarting them
@@ -31,8 +31,8 @@ so we also prevent that by simply forbidding Sisyphus from importing a save file
 
 Feigning annoyance,
 Sisyphus starts clicking.
-Cookie Clicker will display "Infinity cookies" once we hit one centillion cookies (10^303 cookies).
-"Clicking 10^303 times will take a while",
+Cookie Clicker will display "Infinity cookies" once we hit one centillion cookies (`10^303` cookies).
+"Clicking `10^303` times will take a while",
 thinks Sisyphus,
 "but compared to literal eternity, this will be quick!"
 
@@ -97,7 +97,7 @@ and `r`, the **significand** (also sometimes called the mantissa),
 is a rational number between 1 and 2.
 The bit string representation of these numbers looks like
 
-    seeeeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.
+    seeeeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 
 - `s` is the sign bit (`0` for positive and `1` for negative).
 
@@ -196,7 +196,7 @@ Hence JavaScript _rounds that number down_ to `2^53`.
 The next click also stays at `2^53` for the same reason.
 And the next one and the next one.
 Hence Sisyphus is stuck at `2^53` cookies,
-i.e. 9007199254740992---about 9.007 quadrillion.
+i.e. 9007199254740992 --- about 9.007 quadrillion.
 
 Therefore,
 Sisyphus must actually pay attention to other parts of the game,
@@ -234,8 +234,8 @@ press F12 to open the console,
 and type `2**53 + 1.5` and then `2**53 + 2` and see that they yield the same result.)
 
 But what if the mathematical result sits exactly in the middle?
-In this case,
-we look at the significand of the two numbers surrounding the mathematical result.
+JavaScript breaks this tie in the following way.
+First, we look at the significand of the two numbers surrounding the mathematical result.
 For example,
 when we are at `2^53` sugar lumps and we get another one,
 the two candidates are `2^53` and `2^53+2`,
@@ -246,7 +246,7 @@ Look at the rightmost bit of the significand:
 it will always be the case that one of the candidates has a significand whose rightmost bit is `0`,
 and the other candidate has a significant whose rightmost bit is `1`.
 JavaScript specifies that we pick the one with bit `0` in case of ties,
-so the tie is broken in favor of `2^53`.
+so this tie is broken in favor of `2^53`.
 
 If we had `2^53+2` lumps and we got another one,
 then the significands of the two candidates `2^53+2` and `2^53+4`
@@ -298,12 +298,12 @@ he can sacrifice the garden `2^52` times to go from `2^56` sugar lumps to `2^57`
 
 (There is yet one last way of getting multiple sugar lumps:
 fully offline lumps
----that is, sugar lumps which started growing offline and are auto-harvested offline---
+--- that is, sugar lumps which started growing offline and are auto-harvested offline ---
 are awarded in a single go,
 so if Sisyphus logs off for 20 days,
 he will get 19 lumps in a single batch.
 This would essentially make the number of sugar lumps unlimited.
-but because Sisyphus is serving a sentence
+But because Sisyphus is serving a sentence
 we will not simply allow him to log off whenever he pleases.
 His previous punishment was rolling a boulder for all eternity,
 so we will force him to play Cookie Clicker for all eternity.
@@ -327,7 +327,7 @@ i.e. we "float" the decimal place to make sure that `r` is between 1 and 10
 Analogously,
 in base-2 scientific notation
 
-    ± r * 10^e,
+    ± r * 2^e,
 
 the significand is normalized to be in the interval `[1, 2)`
 (between 1 and 2, including 1 and excluding 2).
@@ -351,7 +351,7 @@ This is where the reserved exponents show up.
   we encode a _subnormal number_.
   Here the significand `r` is a number between 0 and 1 (instead of between 1 and 2),
   again a fraction whose denominator is a multiple of `2^(-52)`,
-  and it encodes the number `r * 10^(-1022)`.
+  and it encodes the number `r * 2^(-1022)`.
   - These numbers are called _subnormal_
     because the significand is smaller than it would be if it were to be normalized.
     These numbers extend a bit the range of numbers available
@@ -435,7 +435,7 @@ these counters will be capped off at `2^53`.
   we will discuss more about this in a later article.
 
 Most of this article was spent understanding how IEEE754 works.
-In the next article,
+[In the next article](./sisyphus-plays-cookie-clicker-2-stock-market.md)
 Sisyphus will purchase buildings and upgrades and perform combos!
 
 
@@ -447,6 +447,7 @@ I have created a GitHub repository containing several save games from our hero's
 <https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/>.
 You will need [Cookie Connoisseur](https://github.com/staticvariablejames/cookie-connoisseur)
 to time-travel far enough into the future and witness the game as Sisyphus saw it,
-but you should be able to get a glimpse of our hero's progress.
+but even with just the save files
+you should be able to get a glimpse of our hero's progress.
 
 [The save file from this first article is available here.](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus1.cki)

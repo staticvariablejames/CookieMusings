@@ -124,7 +124,7 @@ The Birthday Cookie is a cookie upgrade that gives 1% CpS boost
 per year that the game existed since the game was released.
 For example,
 at the moment that this article was written,
-purchasing the birthday cookie gives a 12% boost in CpS.
+purchasing the birthday cookie gave a 12% boost in CpS.
 However:
 - The calculation of the boost given by the cookie is computed when the game starts up.
   Hence,
@@ -138,13 +138,17 @@ However:
     January 1st, 1970 (the Unix epoch),
     and this limit date corresponds to `86400 * 10^11` milliseconds,
     i.e. 100 million days.
-    This number (8.64 quadrillion) is close to the number 2^53 (about 9.007 quadrillion),
-    after which millisecond precision becomes impossible.
+    This number (8.64 quadrillion) is close to the number `2^53` (about 9.007 quadrillion),
+    after which millisecond precision becomes impossible,
+    which is probably why this was the chosen limit for `Date` objects.
 - The calculation failure is _catastrophic_.
   `new Date(86400 * 10**11 + 1)` is an invalid date,
-  and any calculation performed with it becomes `NaN`.
-  So the boost given by the birthday cookie becomes `NaN`,
-  which irreversibly corrupts the save file.
+  so the boost given by the Bithday Cookie becomes the value `NaN` ("Not a Number").
+  By design,
+  `NaN`s are "viral",
+  in the sense that any calculation involving `NaN` yields another `NaN`.
+  This means that `NaN`s "spread" through the game,
+  irreversibly corrupting the save file.
 
 Hence,
 if Sysiphus wants to purchase the birthday cookie,
@@ -176,7 +180,7 @@ Wrinkler ambergris is quickly grabbed by our hero,
 who now has to study how wrinklers suck cookies.
 
 With a single wrinkler,
-every game tick it will suck 5% of what would be gained by Sisyphus.
+in every game tick it will suck 5% of what would be gained by Sisyphus.
 These cookies are stored in the wrinkler,
 which
 (as every number in JavaScript)
@@ -208,17 +212,23 @@ There are a few more wrinkles (hah) to this calculation.
 The first is what happens if there are multple wrinklers.
 With two wrinklers,
 instead of each wrinkler sucking 5% of the CpS (for a total of 10%),
-actually each wrinkler sucks 10% of the CpS.
-The actual reduction in CpS gain is still just 10%;
-hence normal players effectively experience an increase of 10% of CpS just by having two wrinklers.
-Sisyphus is operating at the extremes of IEEE754 floating-point numbers,
+actually each wrinkler sucks 10% of the CpS,
+collectively fattening wrinklers by 20% of the CpS;
+however,
+the CpS reduction happens as if only a single wrinkler were sucking cookies.
+In other words,
+"normal" players see their CpS being reduced by 10%,
+but the wrinklers fatten up by 20% of the CpS,
+meaning players effectively experience an increase of 10% in the rate at which they gain cookies.
+Sisyphus, however, is operating at the extremes of IEEE754 floating-point numbers,
 so he actually experiences a much larger boost:
 withering 10% of CpS instead of just 5% doubles the cap
 on how many cookies can be stored in a single wrinkler.
 In general,
 with `n` wrinklers,
-each wrinkler suck `n/20` of the CpS;
-for example,
+each wrinkler suck `n/20` of the CpS,
+and the player experiences a CpS reduction of a single wrinkler (`n/20` of the CpS).
+For example,
 with a ring of 10 wrinklers
 (the maximum that Sisyphus can get, as he cannot ascend)
 the wrinklers digest 50% of the CpS.
@@ -240,6 +250,12 @@ increasing that number by 45% (i.e. withering 72.5% of the CpS) with a full gard
 The second wrinkle in the calculation is the bonuses that are applied after the wrinkler is popped.
 By default the game gives a 10% bonus to this number
 (i.e. there's a bonus multiplier of 1.1).
+- In detail, this means that,
+  for two wrinklers,
+  players lose 10% of CpS due to sucking,
+  but gain `20% * 1.1 = 22%` CpS due to popping wrinklers,
+  meaning that normal players actually experience a CpS gain of 12% with two wrinklers,
+  and without boosts to this bonus.
 The heavenly upgrade Sacrilegious corruption multiplies this by 1.05,
 the Easter egg Wrinklerspawn multiplies this by another 1.05,
 the dragon aura Dragon Guts multiplies this by 1.2 (or 1.22 if together with Reality Bending),
@@ -312,7 +328,7 @@ And Sisyphus's warehouses are _big_.
 The storage capacity for each good is its highest amount of the corresponding building,
 plus a bonus from the office level,
 plus 10 times its level.
-The first two terms sum to less than 4 digits (they're smaller than 10000)
+The first two terms sum to at most a 4-digit number (they're smaller than 10000)
 but the last term is,
 of course, `10 * 2^53`,
 i.e. around 90 quadrillion.
@@ -345,14 +361,14 @@ then purchase a single unit of that good,
 and repeat this proces 90 quadrillion times.
 But when he sold all the goods at once for the first time,
 his bank became 90 quadrillion times higher than the cost of a single unit of each good.
-This is more than 2^54 (18 quadrillion),
+This is more than `2^54` (18 quadrillion),
 so when we purchase a single unit of that good and subtract that number from the cookie bank,
 the IEEE754 floating-point specification dictates that
 the result must round back to the same value of the cookie bank.
 Each singular good literally becomes a rounding error,
 whence Sisyphus can purchase units of each stock literally for free.
 - Technical explanation:
-  if the `c` cookies that Sisyphus has is between `2^e` and `2^(e+1)`,
+  if the `c` cookies that Sisyphus has in bank is between `2^e` and `2^(e+1)`,
   then the `2^52` floating-point numbers represented in this interval
   are spaced `2^(e-52)` apart.
   If we subtract a value `v` from `c` which is smaller than `2^(e-53)`,
@@ -362,7 +378,7 @@ whence Sisyphus can purchase units of each stock literally for free.
   where the representable numbers are spaced `2^(e-53)` apart.
   For this exception,
   we must guarantee that `v` is at most `2^(e-54)`
-  (i.e. 2^54 times smaller than `c`)
+  (i.e. `2^54` times smaller than `c`)
   to ensure that `c-v` rounds to `c`.
 
 With this,
@@ -489,7 +505,7 @@ and repeat the cycle again.
 Without Krumblor's Supreme Intellect,
 he would need over 3700 wizard towers for that.)
 
-These nine building specials gives Sisyphus a CpS boost of 6.52e19,
+These nine building specials gives Sisyphus a CpS boost of `6.52e19`,
 so now the hypothetical duketater harvest yields `7 * 6.52e19 * 7200 * CpS = 3.28e24 * CpS` cookies,
 which is more than the goods in his warehouses!
 But before he decides whether to sacrifice one nursetulip or one golden clover
@@ -540,7 +556,7 @@ once the second naturally-spawning golden cookie is clicked,
 Sisyphus plants Whiskerbloom buds to get a slight boost to milk.
 Quadrillions of wrinklers fattened up and popped later,
 Sisyphus' bakery reaches [146.784 quattuortrigintillion cookies](https://github.com/staticvariablejames/SisyphusPlaysCookieClicker/blob/master/saves/sisyphus2-5.cki),
-i.e. 2^356 cookies.
+i.e. `2^356` cookies.
 
 Interestingly,
 the loans from the stock market minigame do not help Sisyphus at all.
@@ -554,7 +570,7 @@ so he has to let go of that 3.6 factor.
 
 Sisyphus has ignored the Grimoire spell Gambler's Fever Dream;
 this is the last trick up his sleeve,
-and we will analyze it in the next article.
+and we will analyze it [in the next article](./sisyphus-plays-cookie-clicker-3-gfd.md).
 
 
 The Companion GitHub Repository
