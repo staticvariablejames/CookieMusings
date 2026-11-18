@@ -175,6 +175,73 @@ So cheapcap-like exploits already existed two years prior to the introduction of
   even though each cycle of the exploit takes much longer,
   the gains on each cycle would be much bigger.
 
+Potential Solutions
+-------------------
+
+Orteil has chosen to patch the cheapcap exploit by lowering the maximum `refundFactor`.
+As discussed above,
+this means that any revokable building price discounts must forever be very weak;
+the cheapcap curse remains active.
+Cleansing this curse would require a fundamental rework on how buildings are sold on Cookie Clicker.
+The following is a compilation of ideas suggested by the community.
+
+- The brute-force solution is to record the purchase price of every building,
+  and use that value when the building is sold.
+  This essentially decouples `dynamicPurchaseFactor` from the value refunded when selling the building.
+  The only real downside is that it introduce significant bloat to the save file.
+  - An IEEE754 floating-point number requires 8 bytes to be stored
+    (more if it is represented in a textual format),
+    and players easily get to `10 000` buildings late game,
+    fattening the save file by at the very least 80kb.
+    Save files are 6-8kb,
+    so this change would alone enlarge the save file by an order of magnitude.
+    (These save files are still small compared to "regular" (non-browser) games,
+    but 6-8kb is still in the realm of human-manageable,
+    whereas 100kb saves are not.)
+
+- The lazy solution is to simply make selling buildings not award any cookies back.
+  For skilled players,
+  the amount of cookies obtained from selling buildings is so small that it will not make a difference.
+  The only thing we need to adjust is that now Earth Shatterer has no purpose,
+  and has to be given a different job.
+  - The aura could still be related to buildings,
+    for example,
+    or it could have a different name and effect altogether.
+
+- A more elaborate and space-efficient solution, proposed by Cursed Sliver (`cursedsliver` on Discord),
+  is to keep a "pool of cookies" for each building.
+  This pool of cookies would record the number of cookies spent purchasing that building,
+  and when selling,
+  all refunded cookies would be taken from that pool.
+  Say, if we have `n+1` buildings,
+  when selling a building we would take out a fraction of `1.15^n/(1 + 1.15 + ... + 1.15^n)` from the pool,
+  multiply that by the `refundFactor`,
+  and give it to the player.
+  The complicated-looking fraction ensures that,
+  if the building discounts stay the same throughout the game,
+  this solution exactly matches the brute-force solution given above
+  (so it is intuitive for players in the early game).
+  And the fact that we always take cookies out from a pool of cookies
+  means that, as long as `refundFactor` stays below `1.0`,
+  all refunded cookies must have been generated through some other mean first.
+
+- Hybrid approaches are also possible.
+  We could store the purchase price of the last 10 units of each building,
+  and store the remaining cookies in a cookie pool,
+  for example;
+  or simply not refund those remaining cookies.
+
+- My favorite solution is the hardest to implement/balance: disallow selling buildings altogether.
+  It would require significant changes to the game.
+  Earth Shatterer, Dragon Orbs, and Godzamok would have to be reworked.
+  The upgrades Lucky Digit, Lucky Number, and Lucky Payout
+  (which appears when the prestige level has one, two, or four 7s)
+  and the achievement When The Cookies Ascend Just Right are harder to obtain.
+  The Grimoire would be nerfed,
+  because it is now hard to manipulate the max magic.
+  And Rigidel could be buffed,
+  because now maintaining its divisible-by-10 condition is much more of a chore.
+
 Historical Notes
 ----------------
 
@@ -199,4 +266,3 @@ from 2014,
 but that post witnesses the fact that the bug was not, say,
 patched on Cookie Clicker 2.0,
 and then reintroduced later.)
-
