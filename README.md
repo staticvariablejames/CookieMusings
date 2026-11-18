@@ -26,3 +26,4 @@ Articles focusing on the development of mods,
 including programming advice and design discussions.
 
 - [David Bau's `seedrandom`](./david-bau-seedrandom.md)
+- [The Cheapcap Curse](./the-cheapcap-curse.md)

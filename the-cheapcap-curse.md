@@ -11,6 +11,14 @@ If your mod has some effect that change the prices of buildings,
 those effects must be _permanent_
 (i.e. only removable by ascending).
 
+Similarly,
+your mod should not buff cheapcaps,
+the Fierce Hoarder aura,
+the Everything Must Go golden cookie effect,
+the Summon Crafty Pixies spell from the Grimoire
+(nor nerf its backfire),
+or the Dotjeiess spirit from the Pantheon.
+
 History: The Cheapcap Exploit
 -----------------------------
 
@@ -29,12 +37,12 @@ It works like this.
 2. The plants give in total a 12.06% discount when purchasing buildings,
    so if we were to spend `x` cookies purchasing buildings,
    we now spend only `0.8794 * x` cookies instead.
-   Purchase as many buildings as we can.
+   Purchase as many buildings as you can.
 3. Now freeze the garden, thus disabling the cheapcaps.
    Now the buildings we got on step 2 would cost again `x` cookies.
 4. Sell those buildings.
    With Earth Shatterer,
-   we would normally get 85% of the sale price back.
+   we would normally get 85% of the purchase price back.
    However,
    due to a bug in the game,
    the refund factor of Earth Shatterer applies to the cost of the _next_ building,
@@ -107,7 +115,7 @@ we get the slightly lower value of `0.8736114716248926`.
 The other dynamic building discounts are
 1. the Fierce Hoarder aura (buildings are 2% cheaper, or 2.2% with Reality Bending)
 2. the Everything Must Go effect (buildings are 5% cheaper, obtainable from golden cookies during April fools)
-3. the Summon Crafty Pixes spell from the Grimoire (buildings are 2% cheaper)
+3. the Summon Crafty Pixies spell from the Grimoire (buildings are 2% cheaper)
 4. the Dotjeiess spirit from the Pantheon (up to 7% discount, when worshipped in the diamond slot).
 
 Together,
@@ -137,7 +145,7 @@ Loans,
 and so on.
 
 Cheapcaps also provide the same discount for upgrades,
-and there are other discounts as well.
+and there are other upgrade discounts as well.
 They are also very weak,
 but here we can easily fix that by making these boost stronger.
 Nothing would _really_ break if cheapcaps gave -2% upgrade cost, rather than just -0.2%,
@@ -180,10 +188,10 @@ Potential Solutions
 
 Orteil has chosen to patch the cheapcap exploit by lowering the maximum `refundFactor`.
 As discussed above,
-this means that any revokable building price discounts must forever be very weak;
+this means that any revocable building price discounts must forever be very weak;
 the cheapcap curse remains active.
 Cleansing this curse would require a fundamental rework on how buildings are sold on Cookie Clicker.
-The following is a compilation of ideas suggested by the community.
+The following is a compilation of ideas.
 
 - The brute-force solution is to record the purchase price of every building,
   and use that value when the building is sold.
@@ -192,12 +200,12 @@ The following is a compilation of ideas suggested by the community.
   - An IEEE754 floating-point number requires 8 bytes to be stored
     (more if it is represented in a textual format),
     and players easily get to `10 000` buildings late game,
-    fattening the save file by at the very least 80kb.
-    Save files are 6-8kb,
+    fattening the save file by at the very least 80kB.
+    Save files are 6-8kB,
     so this change would alone enlarge the save file by an order of magnitude.
     (These save files are still small compared to "regular" (non-browser) games,
-    but 6-8kb is still in the realm of human-manageable,
-    whereas 100kb saves are not.)
+    but 6-8kB is still in the realm of human-manageable,
+    whereas 100kB saves are not.)
 
 - The lazy solution is to simply make selling buildings not award any cookies back.
   For skilled players,
@@ -210,11 +218,11 @@ The following is a compilation of ideas suggested by the community.
 
 - A more elaborate and space-efficient solution, proposed by Cursed Sliver (`cursedsliver` on Discord),
   is to keep a "pool of cookies" for each building.
-  This pool of cookies would record the number of cookies spent purchasing that building,
-  and when selling,
-  all refunded cookies would be taken from that pool.
-  Say, if we have `n+1` buildings,
-  when selling a building we would take out a fraction of `1.15^n/(1 + 1.15 + ... + 1.15^n)` from the pool,
+  Add cookies to that pool whenever we purchase that building,
+  and when selling that building,
+  all refunded cookies are taken from that pool.
+  Say, if we have `n+1` units of a building,
+  when selling one we would take out a fraction of `1.15^n/(1 + 1.15 + ... + 1.15^n)` from the pool,
   multiply that by the `refundFactor`,
   and give it to the player.
   The complicated-looking fraction ensures that,
@@ -223,7 +231,8 @@ The following is a compilation of ideas suggested by the community.
   (so it is intuitive for players in the early game).
   And the fact that we always take cookies out from a pool of cookies
   means that, as long as `refundFactor` stays below `1.0`,
-  all refunded cookies must have been generated through some other mean first.
+  all refunded cookies must have been generated through some other means first;
+  i.e., building sales cannot possibly generate more cookies.
 
 - Hybrid approaches are also possible.
   We could store the purchase price of the last 10 units of each building,
@@ -249,7 +258,7 @@ Some older versions of Cookie Clicker are available,
 but as far as I can tell,
 by and large most of Cookie Clicker history is effectively lost media.
 
-So, to write the introduction in the beginning of the article,
+So, to write the history section,
 I based myself on other sources.
 Dates and version numbers were taken from
 [the version history on the Cookie Clicker wiki](https://cookieclicker.wiki.gg/wiki/Version_History).
